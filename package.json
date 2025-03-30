@@ -1,0 +1,20 @@
+{
+  "name": "eyrie",
+  "version": "1.0.0",
+  "description": "<h1>EyrieNaija</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.23.0",
+    "husky": "^9.1.7"
+  },
+  "lint-staged": {
+    "Eyrie-web/src/**/*.{tsx,ts,css}": "prettier --write",
+    "Eyrie-web/src/**/*.{tsx,ts}": "eslint --fix"
+  }
+}
