@@ -1,0 +1,32 @@
+name: Lint Code
+
+on:
+  pull_request:
+    branches:
+      - Nodejs(BE)
+      - fastapi(MSBE)
+      - mobile
+      - web
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Set up SuperLinter
+        uses: github/super-linter@v4
+        env:
+          RUN_LOCAL: true
+        with:
+          LINTER_RULES_PATH: .github/linters
+
+      - name: Run SuperLinter
+        run: |
+          docker run -e RUN_LOCAL=true -v $(pwd):/tmp/lint github/super-linter:latest
