@@ -1,0 +1,4 @@
+cd Eyrie-web && npx lint-staged
+cd ../Eyria-mobile && npx lint-staged
+cd ../MonoServer && npx lint-staged
+
