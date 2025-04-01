@@ -8,7 +8,7 @@
 
 ​
 
-## Related Issue (Link to issue ticket) **DO NOT CREATE AN ISSUE THIS IS NOT NEEDED FOR NOW**
+## Related Issue (Link to issue ticket) **IGNORE IF YOU ARE NOT WORKING ON AN ISSUE**
 
 <!--- This project only accepts pull requests related to open issues. -->
 <!--- If suggesting a new feature or change, please discuss it in an issue first. -->
