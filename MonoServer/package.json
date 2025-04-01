@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "nodemon --exec ts-node app/server.ts"
+    "dev": "nodemon --exec ts-node app/server.ts",
+    "test" "test"
   },
   "author": "",
   "license": "ISC",
