@@ -1,4 +1,3 @@
-cat > CONTRIBUTING.md << 'EOF'
 # Contributing to EyrieNaija
 
 Thank you for your interest in contributing to EyrieNaija! This document provides guidelines and instructions for contributing to our real estate marketplace platform.
@@ -156,4 +155,3 @@ As mentioned in the project overview, teams will rotate weekly to encourage cros
 
 If you have any questions or need help, please don't hesitate to reach out to the project maintainers.
 Thank you for contributing to EyrieNaija! 🏠 🇳🇬
-EOF
