@@ -1,6 +1,6 @@
 <!--- Provide a general summary of your changes in the Title above -->
 
-​
+
 
 ## Description
 
@@ -8,11 +8,11 @@
 
 ​
 
-## Related Issue (Link to issue ticket)
+## Related Issue (Link to issue ticket) **DO NOT CREATE AN ISSUE THIS IS NOT NEEDED FOR NOW**
 
-<!--- This project only accepts pull requests related to open issues -->
-<!--- If suggesting a new feature or change, please discuss it in an issue first -->
-<!--- If fixing a bug, there should be an issue describing it with steps to reproduce -->
+<!--- This project only accepts pull requests related to open issues. -->
+<!--- If suggesting a new feature or change, please discuss it in an issue first. -->
+<!--- If fixing a bug, there should be an issue describing it with steps to reproduce. -->
 <!--- Please link to the issue here: -->
 
 ​
