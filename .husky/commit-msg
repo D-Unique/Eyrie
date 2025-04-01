@@ -1,0 +1,1 @@
+cd Monoserver && npx --no-install commitlint --edit "$1"
