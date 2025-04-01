@@ -57,9 +57,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: '${{ matrix.project }}/package-lock.json'
-          npm-cache-folder: /home/runner/.npm 
+          
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('${{ matrix.project }}/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       
       - name: Install dependencies
         run: |
