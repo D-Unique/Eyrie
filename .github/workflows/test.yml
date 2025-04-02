@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [Eyrie-web, Eyrie-mobile, MonoServer]
+        project: [Eyrie-web, Eyria-mobile, MonoServer]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -58,7 +58,16 @@ jobs:
         with:
           node-version: '18'
 
-      
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ${{ github.workspace }}/${{ matrix.project }}/node_modules
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('${{ matrix.project }}/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: |
           cd ${{ matrix.project }}
