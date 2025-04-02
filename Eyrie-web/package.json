@@ -12,7 +12,6 @@
     "format": "prettier --write .",
     "lint:fix": "next lint --fix",
     "test": "vitest --reporter=verbose",
-    "prepare": "husky install"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
