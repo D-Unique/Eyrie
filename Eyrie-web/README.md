@@ -5,7 +5,7 @@
 npm install
 ```
 
-**T*hen**
+**Then**
 ```bash
 npm audit fix --force
 ```

@@ -1,116 +1,80 @@
-/**
- * @file
- * @author "Unigwe Emmanuel"
- * @description "This component is the Navbar component"
- * @param {void}
- * @returns {JSX.Element} - "This returns the Navbar component"
- */
 "use client";
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
-const Navbar: React.FC = () => {
-  const [open, setOpen] = useState(false);
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navItems = ["Home", "Properties", "About", "Contact us", "Blogs"];
+
   return (
-    <header
-      className={`flex fixed top-0 left-0 right-0 z-50 w-full bg-black shadow-md  opacity-90 ${open ? "max-sm:h-44 max-sm:opacity-100" : ""} `}
-    >
-      <nav className=" flex flex-rol gap-[700px] space-x-4 w-full h-[40px] max-sm:gap-[80px] max-sm:mx-auto">
+    <nav className="relative z-50">
+      <div className="flex justify-between items-center px-6 py-4 md:px-12">
+        <div className="flex items-center">
+          <Link
+            href="/"
+            className="text-white text-2xl font-bold tracking-wider hover:text-gray-200 transition-colors"
+          >
+            EYRIE<span className="text-xs align-top">™</span>
+          </Link>
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-8">
+          {navItems.map((item) => (
+            <Link
+              href={`/${item.toLowerCase().replace(" ", "-")}`}
+              key={item}
+              className="text-white hover:text-orange-500 transition-colors duration-300 font-medium 
+                        relative group"
+            >
+              {item}
+              <span
+                className="absolute left-0 bottom-0 w-0 h-0.5 bg-orange-500 
+                              group-hover:w-full transition-all duration-300"
+              ></span>
+            </Link>
+          ))}
+        </div>
+
         <Link
-          href="/"
-          className="flex items-center ml-32 my-auto relative top-7  max-sm:ml-10 max-sm:w-16"
+          href="/signin"
+          className="bg-white text-black px-6 py-2 rounded-full font-medium 
+                    hover:bg-orange-500 hover:text-white transition-all duration-300
+                    transform hover:scale-105"
         >
-          <Image
-            src="/logo.jpg"
-            alt="Eyrie Logo"
-            width={80}
-            height={1}
-            loading="eager"
-          />
+          Sign in
         </Link>
 
-        <div
-          className={`hidden  max-sm:items-center max-sm:justify-start  max-sm:flex-col  max-sm:h-[1000px]  max-sm:mt-4 ${open ? "max-sm:flex" : "hidden"} `}
-        >
-          <div className="text-sm space-y-4  text-center">
-            <a
-              href="#responsive-header"
-              className="block mt-4 text-[#e6bf33] hover:text-[#FFF2C2] "
-            >
-              Home
-            </a>
-            <a
-              href="#responsive-header"
-              className="block mt-4 text-[#e6bf33] hover:text-black "
-            >
-              Properties
-            </a>
-            <a
-              href="#responsive-header"
-              className="block mt-4 text-[#e6bf33] hover:text-black"
-            >
-              About
-            </a>
-          </div>
-          <div>
-            <a
-              href="#"
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-[#e6bf33] border-black hover:border-transparent hover:text-white hover:bg-black mt-4 max-sm:px-2"
-            >
-              Sign In
-            </a>
-          </div>
-          <div>
-            <FontAwesomeIcon
-              icon={faBars}
-              onClick={() => setOpen(true)}
-              className={` text-[#e6bf33] text-2xl  ml-40 mt-3 cursor-pointer ${open ? "hidden" : ""}`}
-            />
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white focus:outline-none"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
 
-            <FontAwesomeIcon
-              icon={faClose}
-              className={`text-[#e6bf33] text-2xl  mr-8 mt-8 cursor-pointer ${open ? "" : "hidden"}`}
-              onClick={() => setOpen(false)}
-            />
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90 py-4 px-6">
+          <div className="flex flex-col space-y-4">
+            {navItems.map((item) => (
+              <Link
+                href={`/${item.toLowerCase().replace(" ", "-")}`}
+                key={item}
+                className="text-white text-lg hover:text-orange-500 transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            ))}
           </div>
         </div>
-
-        <div className=" flex items-center max-sm:hidden">
-          <div className="text-sm space-x-14 lg:flex-grow ">
-            <a
-              href="#responsive-header"
-              className="block mt-4 text-[#e6bf33] lg:inline-block lg:mt-0 hover:text-[#FFF2C2] mr-4"
-            >
-              Home
-            </a>
-            <a
-              href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-[#e6bf33] hover:text-[#FFF2C2] mr-4"
-            >
-              Properties
-            </a>
-            <a
-              href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-[#e6bf33] hover:text-[#FFF2C2]"
-            >
-              About
-            </a>
-          </div>
-          <div>
-            <a
-              href="#"
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-[#e6bf33] border-black hover:border-transparent hover:text-white hover:bg-black mt-4 lg:mt-0"
-            >
-              Sign In
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
+      )}
+    </nav>
   );
-};
-
-export default Navbar;
+}
