@@ -85,7 +85,7 @@ export default function Home() {
           </div>
 
           <Link
-            href="/login"
+            href="/signup"
             className="bg-white text-black px-6 py-2 rounded-full font-medium 
                       hover:bg-orange-500 hover:text-white transition-all duration-300
                       transform hover:scale-105"
