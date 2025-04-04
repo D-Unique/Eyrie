@@ -23,7 +23,7 @@ export default function Home() {
     }, 4000); // Rotation every 4 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [backgrounds.length]);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -85,7 +85,7 @@ export default function Home() {
           </div>
 
           <Link
-            href="/signin"
+            href="/login"
             className="bg-white text-black px-6 py-2 rounded-full font-medium 
                       hover:bg-orange-500 hover:text-white transition-all duration-300
                       transform hover:scale-105"
