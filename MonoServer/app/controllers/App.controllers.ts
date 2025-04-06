@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { checkDatabaseConnection } from "../database/Mysql.database";
+import { checkDatabaseConnection, ManageMysqlTables } from "../database/Mysql.database";
 
 import redis from "../database/Redis.database";
 
@@ -16,9 +16,36 @@ class AppController {
         } catch (error) {
             // If the database is not available, respond with an error message
             console.error("Database connection failed:", error);
-            res.status(500).send("Server is up, but database is down!");
+            return res.status(500).send("Server is up, but database is down!");
         }
     }
+
+    static async createMysqlTable(req: Request, res: Response) {
+        try {
+            // CREATE USER TABLE
+            await ManageMysqlTables.createMysqlDbTables()
+            console.log("Table 'User' created successfully!");
+            res.send("Table 'User' created successfully!");
+        } catch (error) {
+            // If the database is not available, respond with an error message
+            console.log("User Table creation failed:", error);
+            return res.status(500).send("Server is up, but database is down!");
+        }
+    }
+
+    static async dropMysqlTable(req: Request, res: Response) {
+        try {
+            // CREATE USER TABLE
+            await ManageMysqlTables.dropMysqlDbTables()
+            console.log("Table 'User' dropped successfully!");
+            res.send("Table 'User' dropped successfully!");
+        } catch (error) {
+            // If the database is not available, respond with an error message
+            console.log("User Table dropping failed:", error);
+            return res.status(500).send("Server is up, but database is down!");
+        }
+    }
+
 }
 
 
