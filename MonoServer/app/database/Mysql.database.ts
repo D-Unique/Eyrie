@@ -62,9 +62,10 @@ const createTableQuery = `
     \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     \`first_name\` VARCHAR(25) COLLATE utf8mb4_unicode_ci NOT NULL,
     \`last_name\` VARCHAR(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-    \`password\` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    \`password\` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'loginwithgoogle',
     \`email\` VARCHAR(25) COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE,
     \`role\` VARCHAR(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Buyer',
+    \`google_id\` VARCHAR(255) COLLATE utf8mb4_unicode_ci UNIQUE,
     \`created_at\` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     \`updated_at\` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

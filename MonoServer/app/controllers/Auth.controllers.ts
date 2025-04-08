@@ -10,6 +10,7 @@ import { RowDataPacket } from 'mysql2';
 
 
 
+
 declare module "express-serve-static-core" {
     interface Request {
         token?: string;
@@ -147,5 +148,5 @@ export class AuthController {
             return res.json(HttpResponse.InternalServerError("Something went wrong"));
         }
     }
-    
+
 }
