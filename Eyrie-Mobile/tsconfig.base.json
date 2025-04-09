@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "module": "esnext",
+    "moduleResolution": "nodenext",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "jsx": "react-native",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["node_modules", "babel.config.js"]
+}
