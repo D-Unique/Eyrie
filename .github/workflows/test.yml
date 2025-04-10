@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [Eyrie-web, Eyria-mobile, MonoServer]
+        project: [Eyrie-web, Eyrie-mobile, MonoServer]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
