@@ -9,13 +9,20 @@ import Icon from "@expo/vector-icons/FontAwesome5";
 const SignIn: React.FC = () => {
   const navigation = useNavigation();
 
-  const [form, setForm] = useState({
-    name: "",
+  type FormType = {
+    email: string;
+    password: string;
+    remember?: boolean;
+  };
+
+  const [form, setForm] = useState<FormType>({
     email: "",
     password: "",
-    confirmPassword: "",
-    agreement: false,
+    remember: false,
   });
+
+  const isFormValid = form.email !== '' && form.password !== '';
+
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -23,16 +30,12 @@ const SignIn: React.FC = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleAgreementChange = (checked: boolean) => {
-    setForm((prev) => ({ ...prev, agreement: checked }));
+  const handleRememberChange = (checked: boolean) => {
+    setForm((prev) => ({ ...prev, remember: checked }));
   };
 
   const handleSubmit = () => {
-    if (!form.agreement) {
-      Alert.alert("Error", "You must agree to the Terms and Privacy Policy");
-      return;
-    }
-    console.log("Signup form submitted:", form);
+    console.log("Successfuly Login:", form);
   };
 
   return (
@@ -83,9 +86,9 @@ const SignIn: React.FC = () => {
       <View style={styles.checkboxContainer}>
         <View style={styles.innerCheckboxContainer}>
           <Checkbox
-            value={form.agreement}
-            onValueChange={handleAgreementChange}
-            color={form.agreement ? '#2563eb' : undefined}
+            value={form.remember}
+            onValueChange={handleRememberChange}
+            color={form.remember ? '#2563eb' : undefined}
           />
           <Text style={styles.checkboxText}>
             Remember for 30 days
@@ -97,11 +100,11 @@ const SignIn: React.FC = () => {
       </View>
 
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: 'red' }]}
+        style={[styles.button, { backgroundColor: isFormValid ? 'red' : 'gray' }]}
         onPress={handleSubmit}
-        disabled={!form.agreement}
+        disabled={!isFormValid}
       >
-        <Text style={styles.buttonText}>Sign Up</Text>
+        <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
       <View style={styles.lineContainer}>

@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import { Image } from 'react-native';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert, ActivityIndicator } from "react-native";
 import Checkbox from 'expo-checkbox';
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from '@expo/vector-icons';
 import Icon from "@expo/vector-icons/FontAwesome5";
 
+type FormType = {
+  name: string,
+  email: string;
+  password: string;
+  confirmPassword: string;
+  agreement: boolean;
+};
+
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
-
-  const [form, setForm] = useState({
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState<FormType>({
     name: "",
     email: "",
     password: "",
@@ -17,8 +27,8 @@ const SignUp: React.FC = () => {
     agreement: false,
   });
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+  const isFormValid = form.name !== '' && form.email !== '' && form.password !== '' && form.confirmPassword !== '' && form.agreement;
+
 
   const handleChange = (name: string, value: string) => {
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -28,16 +38,66 @@ const SignUp: React.FC = () => {
     setForm((prev) => ({ ...prev, agreement: checked }));
   };
 
+  const isValidName = (name: string) => {
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    return nameRegex.test(name);
+  };
+
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const isValidPassword = (password: string) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
+
+
   const handleSubmit = () => {
-    if (!form.agreement) {
-      Alert.alert("Error", "You must agree to the Terms and Privacy Policy");
+    if (!isValidName(form.name)) {
+      Alert.alert(
+        'Invalid Name',
+        'Please enter your full name.',
+        [{ text: 'OK' }]
+      );
+      return;
+    }
+    if (!isValidEmail(form.email)) {
+      Alert.alert(
+        'Invalid Email Address',
+        'Please enter a valid email address.',
+        [{ text: 'OK' }]
+        );
+      return;
+    }
+    if (!isValidPassword(form.password)) {
+      Alert.alert(
+        'Invalid Password',
+        'Password must be at least 8 characters long, include a capital letter, a number and a symbol.',
+        [{ text: 'OK' }]
+        );
       return;
     }
     if (form.password !== form.confirmPassword) {
-      Alert.alert("Error", "Passwords do not match");
+      Alert.alert(
+        'Password Mismatch',
+        "Passwords do not match",
+        [{ text: 'OK' }]
+        );
       return;
     }
-    console.log("Signup form submitted:", form);
+
+    
+    // singup logic
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      console.log("Signup form submitted:", form);
+      Alert.alert('Success', 'Signup Successful!', [{ text: 'OK' }]);
+      navigation.navigate('home');
+    }, 2000);
   };
 
   return (
@@ -133,11 +193,15 @@ const SignUp: React.FC = () => {
       </View>
 
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: form.agreement ? 'red' : 'gray' }]}
+        style={[styles.button, { backgroundColor: isFormValid ? 'red' : 'gray' }]}
         onPress={handleSubmit}
-        disabled={!form.agreement}
+        disabled={!isFormValid}
       >
-        <Text style={styles.buttonText}>Sign Up</Text>
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>Sign Up</Text>
+        )}
       </TouchableOpacity>
 
       <View style={styles.lineContainer}>
@@ -163,8 +227,8 @@ const SignUp: React.FC = () => {
         <Text style={styles.footerText}>
           Already have an account?
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('signin' as never)}>
-          <Text style={styles.link}>Sign In</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('login' as never)}>
+          <Text style={styles.link}>Login</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
