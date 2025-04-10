@@ -2,6 +2,15 @@
 services:
   express-server:
     build: .
+    develop:
+      watch:
+        - action: sync
+          path: ./app
+          target: /app/app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
     container_name: express-server
     ports:
       - "3000:3000"
@@ -9,39 +18,36 @@ services:
       - MYSQL_HOST=mysql
       - MYSQL_USER=root
       - MYSQL_PASSWORD=rootpassword
-      - MYSQL_DATABASE=mydatabase
+      - MYSQL_DATABASE=EyrieMysqlDb
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - mysql
+      - mysqlDb
       - redis
-    networks:
-      - app-network
 
-  mysql:
+  mysqlDb:
     image: mysql:8.0
+    restart: always
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
+      MYSQL_DATABASE: EyrieMysqlDb
     ports:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-    networks:
-      - app-network
-
+      
+  adminer:
+    image: adminer:5
+    restart: always
+    ports:
+      - "8080:8080"
+    
   redis:
     image: redis:7.4
     container_name: redis
     ports:
       - "6379:6379"
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
 
 volumes:
   mysql-data:

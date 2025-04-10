@@ -1,15 +1,12 @@
-import express, { Router } from "express";
-const app = express();
-const port = 3000;
+import config from "./config/app.config"
+import app from "./app"
 
-const router = Router();
+const environment= process.env.NODE_ENV === 'production' ? 'production' : 'development';  
+const appConfig = config[environment];
+const port = appConfig.port
 
-router.use(a);
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
+  console.log(`Server is running on port ${port}`);
+  
 });
