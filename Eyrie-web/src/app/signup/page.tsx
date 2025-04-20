@@ -7,6 +7,7 @@ export default function Signup() {
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,26 +23,45 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Section: Signup Form */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-white px-6 md:px-12 relative">
-        {/* Logo */}
-        <div className="absolute top-8 left-8 mb-12">
+      {/* Left Section: Image and Text */}
+      <div className="hidden md:flex w-1/2 h-screen relative bg-white p-8">
+        {/* Property Image */}
+        <div className="w-full flex justify-center items-center">
           <Image
-            src="/eyrie-logo.jpg"
-            alt="Eyrie Logo"
-            width={80}
-            height={30}
-            className="object-contain"
+            src="/property1.jpg"
+            alt="Modern two-story house with a garage and garden"
+            className="object-contain rounded-lg max-h-full max-w-full"
+            width={800}
+            height={600}
             priority
           />
         </div>
+      </div>
 
-        <div className="w-full max-w-sm mt-24 mb-8">
-          <h1 className="text-3xl font-bold mb-8">Get Started Now</h1>
+      {/* Right Section: Signup Form */}
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-white px-6 md:px-12">
+        <div className="w-full max-w-sm">
+          <h1 className="text-2xl font-bold mb-6 text-center">Create your Account</h1>
+
+          {/* Sign up with Google */}
+          <button className="flex items-center justify-center w-full bg-gray-100 text-black text-sm py-4 px-8 rounded-lg hover:bg-gray-200 transition duration-300 mb-4">
+            <Image src="/google-icon.svg" alt="Google" width={20} height={20} className="mr-2" />
+            Sign up with Google
+          </button>
+
+          {/* Already have an account */}
+          <p className="text-center text-sm text-gray-500 mb-6">
+            Already have an account?{" "}
+            <a href="/login" className="text-orange-500 hover:underline">
+              Sign in
+            </a>
+          </p>
+
+          {/* Signup Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-black">
-                Name
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Full name
               </label>
               <input
                 type="text"
@@ -50,14 +70,13 @@ export default function Signup() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                placeholder="Enter your name"
-                aria-label="Enter your name"
-                className="mt-1 block w-full px-4 py-1.5 border border-gray-300 rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="Enter your full name"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-500 focus:border-orange-500"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-black">
-                Email address
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                Your Email
               </label>
               <input
                 type="email"
@@ -67,12 +86,11 @@ export default function Signup() {
                 onChange={handleChange}
                 required
                 placeholder="Enter your email"
-                aria-label="Enter your email"
-                className="mt-1 block w-full px-4 py-1.5 border border-gray-300 rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-500 focus:border-orange-500"
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-black">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <input
@@ -83,66 +101,32 @@ export default function Signup() {
                 onChange={handleChange}
                 required
                 placeholder="Enter your password"
-                aria-label="Enter your password"
-                className="mt-1 block w-full px-4 py-1.5 border border-gray-300 rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-500 focus:border-orange-500"
               />
             </div>
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="terms"
-                required
-                aria-label="Agree to terms and policy"
-                className="h-4 w-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
-              />
-              <label htmlFor="terms" className="text-sm text-black">
-                I agree to the <a href="#" className="text-blue-800 hover:underline">terms & policy</a>
+            <div>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                Confirm Password
               </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                placeholder="Confirm your password"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-500 focus:border-orange-500"
+              />
             </div>
             <button
               type="submit"
-              aria-label="Sign up for an account"
-              className="w-full bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-orange-600 transition duration-300"
+              className="w-full bg-orange-500 text-white py-3 px-4 rounded-full hover:bg-orange-600 transition duration-300"
             >
-              Signup
+              Check property Listings
             </button>
           </form>
-
-          {/* Divider */}
-          <div className="flex items-center my-6">
-            <div className="flex-grow border-t border-gray-300"></div>
-            <span className="mx-4 text-gray-500">or</span>
-            <div className="flex-grow border-t border-gray-300"></div>
-          </div>
-
-          {/* Social Login Buttons */}
-          <div className="flex items-center justify-between">
-            <button className="flex items-center justify-center w-full bg-gray-100 text-black text-xs py-2 px-4 rounded-full hover:bg-gray-200 transition duration-300">
-              <Image src="/google-icon.svg" alt="Google" width={20} height={20} className="mr-2" />
-              Sign in with Google
-            </button>
-            <button className="flex items-center justify-center w-full bg-gray-100 text-black text-xs py-2 px-4 rounded-full hover:bg-gray-200 transition duration-300 ml-4">
-              <Image src="/apple-icon.svg" alt="Apple" width={20} height={20} className="mr-2" />
-              Sign in with Apple
-            </button>
-          </div>
-
-          <p className="text-sm text-center text-black mt-4">
-            Have an account? <a href="/login" className="text-blue-800 hover:underline font-bold">Sign In</a>
-          </p>
         </div>
-      </div>
-
-      {/* Right Section: Background Image */}
-      <div className="hidden md:block w-1/2 relative">
-        <Image
-          src="/property1.jpg"
-          alt="Property"
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-          className="object-cover"
-          priority // Preloads the image for better performance
-        />
       </div>
     </div>
   );
