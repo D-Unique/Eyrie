@@ -28,7 +28,7 @@ export default function Signup() {
         {/* Property Image */}
         <div className="w-full flex justify-center items-center">
           <Image
-            src="/property1.jpg"
+            src="/images/signup.jpg"
             alt="Modern two-story house with a garage and garden"
             className="object-contain rounded-lg max-h-full max-w-full"
             width={800}
@@ -45,7 +45,7 @@ export default function Signup() {
 
           {/* Sign up with Google */}
           <button className="flex mb-4 items-center justify-center w-full bg-gray-100 text-black text-sm py-2 px-4 rounded-xl hover:bg-[#B6B6B6] transition duration-300">
-            <Image src="/google-icon.svg" alt="Google" width={20} height={20} className="mr-2" />
+            <Image src="/images/google-icon.svg" alt="Google" width={20} height={20} className="mr-2" />
             Sign up with Google
           </button>
 
@@ -60,7 +60,7 @@ export default function Signup() {
           {/* Signup Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-bold text-[#161616]">
+              <label htmlFor="name" className="block text-sm font-bold text-[#161616] mt-4">
                 Full name
               </label>
               <input

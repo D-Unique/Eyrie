@@ -24,7 +24,7 @@ export default function Login() {
       {/* Background Image */}
       <div className="hidden md:block absolute inset-0">
         <Image
-          src="/login.jpg"
+          src="/images/login.jpg"
           alt="Background"
           fill
           className="object-cover"
@@ -45,7 +45,7 @@ export default function Login() {
           {/* Social Login Buttons */}
           <button className="flex items-center justify-center w-full bg-gray-100 text-black text-sm py-2 px-4 rounded-xl hover:bg-[#B6B6B6] transition duration-300">
             <Image
-              src="/google-icon.svg" alt="Google" width={20} height={20} className="mr-2"
+              src="/images/google-icon.svg" alt="Google" width={20} height={20} className="mr-2"
             />
           </button>
 
