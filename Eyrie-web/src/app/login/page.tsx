@@ -24,7 +24,7 @@ export default function Login() {
       {/* Background Image */}
       <div className="hidden md:block absolute inset-0">
         <Image
-          src="/images/login.jpg"
+          src="/images/Login.jpg"
           alt="Background"
           fill
           className="object-cover"
