@@ -1,11 +1,11 @@
 "use client"; // This is a client component
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturedListings from "@/components/FeaturedListings";
+import WhatYouGet from "@/components/WhatYouGet";
 import Footer from "@/components/Footer";
+import Testimonials from "@/components/Testimonials";
+import Cta from "@/components/Cta";
 
 export default function Home() {
   return (
@@ -13,6 +13,9 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <FeaturedListings />
+      <WhatYouGet />
+      <Testimonials />
+      <Cta />
       <Footer />
     </div>
   );

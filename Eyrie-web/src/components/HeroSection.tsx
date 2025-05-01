@@ -5,14 +5,14 @@ export default function HeroSection() {
     <div className="relative min-h-[80vh] bg-[#F2F2F2] flex flex-col items-center justify-center text-center px-4">
       {/* Text Content */}
       <div className="z-10">
-        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mt-4 mb-8 text-[#555]">
+        <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-bold mt-4 mb-8 text-[#555]">
           Your Next Home is <br />
           One Click Away with <br />
-          <span className="text-[#161616] font-black text-4xl md:text-5xl mt-6 block">
+          <span className="text-[#161616] font-black text-3xl sm:text-4xl md:text-5xl mt-6 block">
             Eyrie
           </span>
         </h1>
-        <p className="text-base md:text-xl lg:text-xl max-w-2xl mb-6 text-[#555]">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-6 text-[#555]">
           Explore handpicked listings across top neighborhoods
         </p>
       </div>

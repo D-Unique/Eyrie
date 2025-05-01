@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { FaBed, FaBath } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
@@ -10,60 +11,77 @@ export default function FeaturedListings() {
       title: "Luxurious Bungalow",
       location: "Lagos, Nigeria",
       price: "₦70,000,000",
+      type: "Buy",
+      bedrooms: 3,
+      bathrooms: 2,
+      size: "1,500 Sqft",
+      image: "/images/feature1.jpg",
+    },
+    {
+      id: 2,
+      title: "Luxurious Bungalow",
+      location: "Lagos, Nigeria",
+      price: "₦50,000,000",
       type: "Rent",
       bedrooms: 3,
       bathrooms: 2,
       size: "1,500 Sqft",
-    },
-    {
-      id: 2,
-      title: "Modern Apartment",
-      location: "Abuja, Nigeria",
-      price: "₦50,000,000",
-      type: "Buy",
-      bedrooms: 2,
-      bathrooms: 1,
-      size: "1,200 Sqft",
+      image: "/images/feature2.jpg",
     },
     {
       id: 3,
-      title: "Semi-Detached Duplex",
+      title: "Luxurious Semi Detached Duplex",
       location: "Port Harcourt, Nigeria",
-      price: "₦85,000,000",
+      price: "₦70,000,000",
       type: "Rent",
-      bedrooms: 4,
-      bathrooms: 3,
-      size: "2,000 Sqft",
+      bedrooms: 3,
+      bathrooms: 2,
+      size: "1,500 Sqft",
+      image: "/images/feature3.jpg",
     },
     {
       id: 4,
-      title: "Luxury Penthouse",
+      title: "Loft Apartment",
       location: "Lekki, Nigeria",
       price: "₦120,000,000",
       type: "Buy",
-      bedrooms: 5,
-      bathrooms: 4,
-      size: "3,000 Sqft",
+      bedrooms: 3,
+      bathrooms: 2,
+      size: "1,500 Sqft",
+      image: "/images/feature4.jpg",
     },
     {
       id: 5,
-      title: "Cozy Studio Apartment",
+      title: "Loft Apartment",
       location: "Ikeja, Nigeria",
       price: "₦25,000,000",
       type: "Rent",
-      bedrooms: 1,
-      bathrooms: 1,
-      size: "800 Sqft",
+      bedrooms: 3,
+      bathrooms: 2,
+      size: "1,500 Sqft",
+      image: "/images/feature4.jpg",
     },
     {
       id: 6,
-      title: "Modern Duplex",
+      title: "Luxurious Bungalow",
       location: "Victoria Island, Nigeria",
       price: "₦95,000,000",
       type: "Buy",
-      bedrooms: 4,
-      bathrooms: 3,
-      size: "2,500 Sqft",
+      bedrooms: 3,
+      bathrooms: 2,
+      size: "1,500 Sqft",
+      image: "/images/feature2.jpg",
+    },
+    {
+      id: 7,
+      title: "Loft Apartment",
+      location: "Victoria Island, Nigeria",
+      price: "₦95,000,000",
+      type: "Buy",
+      bedrooms: 3,
+      bathrooms: 2,
+      size: "1,500 Sqft",
+      image: "/images/feature7.jpg",
     },
   ];
 
@@ -82,12 +100,14 @@ export default function FeaturedListings() {
           >
             {/* Card Header with Image */}
             <div className="relative">
-              <img
-                src="/images/signup.jpg" // Placeholder image
+              <Image
+                src={listing.image}
                 alt={listing.title}
+                width={400}
+                height={300}
                 className="w-full h-64 object-cover rounded-t-2xl"
               />
-              <FaHeart className="absolute top-4 right-4 text-2xl text-[#FFEDE6] border:text-[#FF4500] hover:text-[#FF4500] transition cursor-pointer" />
+              <FaHeart className="absolute top-4 right-4 text-2xl text-[#FFEDE6] hover:text-[#FF4500] transition cursor-pointer" />
             </div>
             {/* Content */}
             <div className="p-4">
@@ -129,10 +149,10 @@ export default function FeaturedListings() {
                   <span>{listing.size}</span>
                 </span>
               </div>
-                {/* Button */}
-                <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF5722] active:bg-[#FF8A65] transition duration-300">
-                  View Details &gt;
-                </button>
+              {/* Button */}
+              <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF5722] active:bg-[#FF8A65] transition duration-300">
+                View Details &gt;
+              </button>
             </div>
           </div>
         ))}

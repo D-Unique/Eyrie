@@ -1,0 +1,29 @@
+{
+  "files.exclude": {
+    "**/.next": true,
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/.next": true,
+    "**/node_modules": true
+  },
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/node_modules/**": true
+  },
+  "git.enabled": false,
+  "git.autofetch": false,
+  "git.confirmSync": false,
+  "git.autorefresh": false,
+
+  // GitHub Copilot performance tuning
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": false,
+    "plaintext": false,
+    "json": false
+  },
+  "github.copilot.advanced": {
+    "inlineSuggestCount": 1
+  }
+}
