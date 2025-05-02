@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -61,8 +62,14 @@ export default function Markeplace() {
             </div>
 
             <div className="mt-6">
-              <FilterSidebar />
+              <FilterSidebar
+                onApplyFilters={(filters) => {
+                  console.log("Applied filters:", filters);
+                  // You can later use the filters to filter your listings.
+                }}
+              />
             </div>
+
             <div className="mt-6">
               <KeyGraphic />
             </div>

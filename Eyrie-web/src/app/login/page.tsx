@@ -45,7 +45,11 @@ export default function Login() {
           {/* Social Login Buttons */}
           <button className="flex items-center justify-center w-full bg-gray-100 text-black text-sm py-2 px-4 rounded-xl hover:bg-[#B6B6B6] transition duration-300">
             <Image
-              src="/images/google-icon.svg" alt="Google" width={20} height={20} className="mr-2"
+              src="/images/google-icon.svg"
+              alt="Google"
+              width={20}
+              height={20}
+              className="mr-2"
             />
           </button>
 
@@ -59,7 +63,10 @@ export default function Login() {
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-bold text-[#161616]">
+              <label
+                htmlFor="email"
+                className="block text-sm font-bold text-[#161616]"
+              >
                 Your Email
               </label>
               <input
@@ -74,25 +81,28 @@ export default function Login() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-bold text-[#161616]">
-              Password
+              <label
+                htmlFor="password"
+                className="block text-sm font-bold text-[#161616]"
+              >
+                Password
               </label>
               <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              placeholder="Enter your password"
-              className="mt-1 block w-full px-4 py-2 bg-[#FBFBFB] border border-[B6B6B6] rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500 focus:outline-none"
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                placeholder="Enter your password"
+                className="mt-1 block w-full px-4 py-2 bg-[#FBFBFB] border border-[B6B6B6] rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500 focus:outline-none"
               />
             </div>
             <button
               type="submit"
               className="w-full h-[50px] px-[24px] py-[16px] bg-[#FF4500] text-[#FFEDE6] border border-[#000000] rounded-[32px] font-medium text-[16px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF5722] active:bg-[#FF8A65] transition duration-300"
             >
-              Get Started
+              Sign in
             </button>
           </form>
         </div>
