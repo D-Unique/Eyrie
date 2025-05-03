@@ -1,6 +1,8 @@
-import { FaHeart, FaBed, FaBath } from "react-icons/fa";
+import Image from "next/image";
+import { FaHeart } from "react-icons/fa";
+import { FaBed, FaBath } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
-import { FaCircle } from "react-icons/fa";
+import { HeartIcon } from "@heroicons/react/24/outline";
 
 const listings = [
   {
@@ -12,7 +14,7 @@ const listings = [
     bedrooms: 3,
     bathrooms: 2,
     size: "1,500 Sqft",
-    image: "/images/bungalow.png",
+    image: "/images/feature1.jpg",
   },
   {
     id: 2,
@@ -72,23 +74,30 @@ export const RentBadgeIcon = () => (
 
 export default function PopularListings() {
   return (
-    <section className="py-10">
-      <h2 className="text-xl font-bold mb-6 px-4 lg:px-0">Popular Listings</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 lg:px-0">
+    <div className="py-10">
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 max-w-6xl mx-auto mb-8">
+        <h2 className="text-xl font-bold">Featured Listings</h2>
+      </div>
+      {/* Listings Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 lg:px-8">
         {listings.map((listing) => (
           <div
             key={listing.id}
-            className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden relative"
+            className="bg-white shadow-lg rounded-3xl overflow-hidden p-2"
           >
-            {/* Wishlist Icon */}
-            <FaHeart className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer text-xl z-10" />
-
-            {/* Image */}
-            <img
-              src={listing.image}
-              alt={listing.title}
-              className="w-full h-52 object-cover"
-            />
+            {/* Card Header with Image */}
+            <div className="relative rounded-2xl overflow-hidden">
+              <Image
+                src={listing.image}
+                alt={listing.title}
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover"
+              />
+              {/* Wishlist Icon */}
+              <FaHeart className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer text-xl z-10" />
+            </div>
 
             {/* Content */}
             <div className="p-4 space-y-2">
@@ -143,6 +152,6 @@ export default function PopularListings() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

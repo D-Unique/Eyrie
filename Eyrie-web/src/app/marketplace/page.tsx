@@ -13,11 +13,11 @@ import FlashSalesTimer from "@/components/FlashSalesTimer";
 import Footer from "@/components/Footer";
 
 const openHouseImages = [
-  "/images/bungalow.png",
+  "/images/feature1.jpg",
   "/images/duplex.jpg",
   "/images/duplex2.jpg",
-  "/images/duplex.jpg",
-  "/images/bungalow.png",
+  "/images/feature7.jpg",
+  "/images/feature3.jpg",
 ];
 
 export default function Markeplace() {

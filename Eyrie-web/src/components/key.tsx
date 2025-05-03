@@ -3,32 +3,41 @@ import React from "react";
 const KeyGraphic = () => {
   return (
     <div
-      className="p-6 rounded-3xl text-black w-full max-w-sm mx-auto"
+      className="rounded-3xl text-black w-full max-w-sm mx-auto"
       style={{
-        backgroundImage:
-          "url('/images/handkey.png'), linear-gradient(to bottom, #FF4401, #FF5C1C)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundBlendMode: "soft-light",
-        height: "300px",
-        width: "270px",
+        backgroundColor: "#FF4500",
+        height: "358px",
+        width: "286px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div className="h-full flex flex-col justify-between">
+      <div className="p-6 h-full flex flex-col">
         <div>
-          <p className="text-sm text-white font-semibold">Eyrie</p>
+          <p className="text-white text-sm font-semibold">Eyrie</p>
+          <p>
+            <br></br>
+          </p>
           <h2 className="text-3xl font-bold leading-tight mt-1">
             Your Next <br />
             <span className="text-white">Property</span>
           </h2>
-          <p className="text-sm mt-2">
+          <p className="text-2xl mt-1">
             Could just be <br /> few clicks away
           </p>
         </div>
 
-        {/* The hand with keys image will be shown through the backgroundImage */}
-        <div className="flex justify-end">
-          {/* This is empty because the hand with keys is in the background image */}
+        {/* Hand with key overlay image */}
+        <div className="absolute bottom-0 right-0 w-full flex justify">
+          <img
+            src="/images/handkey.png"
+            alt="Hand holding keys"
+            className="w-full"
+            style={{
+              mixBlendMode: "hard-light",
+              transform: "translateY(30px)",
+            }}
+          />
         </div>
       </div>
     </div>
