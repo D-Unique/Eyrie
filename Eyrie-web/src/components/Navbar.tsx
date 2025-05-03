@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center px-4 py-3 md:px-12 bg-white rounded-lg mx-auto mt-5 max-w-6xl mb-4">
+    <nav className="flex justify-between items-center px-4 py-3 md:px-12 bg-white rounded-full mx-auto mt-5 max-w-6xl mb-4">
       {/* Logo */}
       <div className="flex items-center">
         <Link href="/">
