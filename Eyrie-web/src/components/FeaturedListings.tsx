@@ -1,6 +1,5 @@
 import { listings } from "../Data/listingsData";
 import Image from "next/image";
-import { FaHeart } from "react-icons/fa";
 import { FaBed, FaBath } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
 import { HeartIcon } from '@heroicons/react/24/outline';

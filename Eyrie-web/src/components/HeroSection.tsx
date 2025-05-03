@@ -2,22 +2,22 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div className="relative min-h-[80vh] bg-[#F2F2F2] flex flex-col items-center justify-center text-center px-4">
+    <div className="relative min-h-[60vh] bg-[#F2F2F2] flex flex-col items-center justify-center text-center px-4">
       {/* Text Content */}
       <div className="z-10">
-        <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-bold mt-4 mb-8 text-[#555]">
+        <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-bold mt-4 mb-4 text-[#555]">
           Your Next Home is <br />
           One Click Away with <br />
           <span className="text-[#161616] font-black text-3xl sm:text-4xl md:text-5xl mt-6 block">
             Eyrie
           </span>
         </h1>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-6 text-[#555]">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-3 text-[#555]">
           Explore handpicked listings across top neighborhoods
         </p>
       </div>
 
-      {/* Image */}
+      {/* Hero Image */}
       <div className="relative w-full max-w-6xl px-4">
         <Image
           src="/images/hero.jpg"
@@ -31,6 +31,122 @@ export default function HeroSection() {
           <button className="bg-[#FF4500] text-[#FFEDE6] px-12 py-3 text-base rounded-[32px] hover:bg-[#FF5722] transition duration-300">
             Check property Listings
           </button>
+        </div>
+      </div>
+
+      {/* Trusted Section */}
+      <div className="mt-6 flex justify-center items-center space-x-4 text-center max-w-6xl px-4">
+        <p className="text-sm sm:text-base md:text-lg lg:text-lg text-[#555] font-medium">
+          Trusted by 100+ Real Estate Developers
+        </p>
+        <Image
+          src="/images/avatar.jpg"
+          alt="Avatar"
+          width={150}
+          height={120}
+          className="rounded-full border border-gray-300"
+        />
+      </div>
+
+      {/* Estates Section */}
+      <div className="w-screen bg-white mt-8 px-4 py-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0 items-center justify-items-center max-w-none">
+          <Image
+            src="/images/sujimoto.jpg"
+            alt="Sujimoto Logo"
+            width={160}
+            height={60}
+            className="object-contain"
+          />
+          <Image
+            src="/images/realestate.jpg"
+            alt="Real Estate Logo"
+            width={160}
+            height={60}
+            className="object-contain"
+          />
+          <Image
+            src="/images/nueton.jpg"
+            alt="Nueton Builders Logo"
+            width={160}
+            height={60}
+            className="object-contain"
+          />
+          <Image
+            src="/images/urbannexus.jpg"
+            alt="Urban Nexus Logo"
+            width={160}
+            height={60}
+            className="object-contain"
+          />
+        </div>
+      </div>
+
+      {/* Services Section */}
+      <div className="py-6 bg-[#F2F2F2] mt-5">
+        {/* Section Header */}
+        <div className="flex items-center justify-between px-4 max-w-6xl mx-auto mb-6">
+          <h2 className="text-xl font-bold">
+            Our Services
+          </h2>
+        </div>
+        {/* Services Grid */}
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Service 1 */}
+          <div className="bg-white shadow-md rounded-3xl p-6 text-center">
+            <Image
+              src="/images/service1.jpg"
+              alt="Buy A Home"
+              width={80}
+              height={80}
+              className="mx-auto mb-4"
+            />
+            <h3 className="text-lg font-semibold text-[#161616] mb-2">Buy A Home</h3>
+            <p className="text-sm text-[#555] mb-4">
+              Browse a wide range of homes that match your style and budget. From cozy
+              apartments to spacious family houses, it's all here.
+            </p>
+            <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#FF4500] hover:text-white border border-[#FF4500] rounded-[32px] font-medium text-[12px] flex items-center justify-center gap-[10px] hover:bg-[#FF4500] active:bg-[#FF8A65] transition duration-300">
+              Find Your Home
+            </button>
+          </div>
+          {/* Service 2 */}
+          <div className="bg-white shadow-md rounded-3xl p-6 text-center">
+            <Image
+              src="/images/service2.jpg"
+              alt="Sell Your Property"
+              width={80}
+              height={80}
+              className="mx-auto mb-4"
+            />
+            <h3 className="text-lg font-semibold text-[#161616] mb-2">Sell Your Property</h3>
+            <p className="text-sm text-[#555] mb-4">
+              Get a free valuation, professional advice, and expert help to list your home
+              and attract serious buyers.
+            </p>
+            <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#FF4500] hover:text-white border border-[#FF4500] rounded-[32px] font-medium text-[12px] flex items-center justify-center gap-[10px] hover:bg-[#FF4500] active:bg-[#FF8A65] transition duration-300">
+              List My Property
+            </button>
+          </div>
+          {/* Service 3 */}
+          <div className="bg-white shadow-md rounded-3xl p-6 text-center">
+            <Image
+              src="/images/service3.jpg"
+              alt="Find A Rental"
+              width={80}
+              height={80}
+              className="mx-auto mb-4"
+            />
+            <h3 className="text-lg font-semibold text-[#161616] mb-2">Find A Rental</h3>
+            <p className="text-sm text-[#555] mb-4">
+              Whether it's for a few months or long-term, we've got great spots lined up
+              for you. Easily filter by budget, or location, and connect with trusted
+              landlords.
+            </p>
+            <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#FF4500] hover:text-white border border-[#FF4500] rounded-[32px] font-medium text-[12px] flex items-center justify-center gap-[10px] hover:bg-[#FF4500] active:bg-[#FF8A65] transition duration-300">
+              Explore Rentals
+            </button>
+          </div>
         </div>
       </div>
     </div>

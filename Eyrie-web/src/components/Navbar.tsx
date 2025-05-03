@@ -14,7 +14,7 @@ export default function Navbar() {
           <Image
             src="/images/logo.jpg"
             alt="Eyrie Logo"
-            width={120}
+            width={80}
             height={40}
             className="object-contain"
           />
