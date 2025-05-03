@@ -1,8 +1,9 @@
+import { listings } from "../data/listingsData";
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { FaBed, FaBath } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
-import { FaCircle } from "react-icons/fa";
+import { HeartIcon } from '@heroicons/react/24/outline';
 
 // BuyBadgeIcon.jsx
 export const BuyBadgeIcon = () => (
@@ -36,86 +37,6 @@ export const RentBadgeIcon = () => (
   </svg>
 );
 export default function FeaturedListings() {
-  const listings = [
-    {
-      id: 1,
-      title: "Luxurious Bungalow",
-      location: "Lagos, Nigeria",
-      price: "₦70,000,000",
-      type: "Buy",
-      bedrooms: 3,
-      bathrooms: 2,
-      size: "1,500 Sqft",
-      image: "/images/feature1.jpg",
-    },
-    {
-      id: 2,
-      title: "Luxurious Bungalow",
-      location: "Lagos, Nigeria",
-      price: "₦50,000,000",
-      type: "Rent",
-      bedrooms: 3,
-      bathrooms: 2,
-      size: "1,500 Sqft",
-      image: "/images/feature2.jpg",
-    },
-    {
-      id: 3,
-      title: "Luxurious Semi Detached Duplex",
-      location: "Port Harcourt, Nigeria",
-      price: "₦70,000,000",
-      type: "Rent",
-      bedrooms: 3,
-      bathrooms: 2,
-      size: "1,500 Sqft",
-      image: "/images/feature3.jpg",
-    },
-    {
-      id: 4,
-      title: "Loft Apartment",
-      location: "Lekki, Nigeria",
-      price: "₦120,000,000",
-      type: "Buy",
-      bedrooms: 3,
-      bathrooms: 2,
-      size: "1,500 Sqft",
-      image: "/images/feature4.jpg",
-    },
-    {
-      id: 5,
-      title: "Loft Apartment",
-      location: "Ikeja, Nigeria",
-      price: "₦25,000,000",
-      type: "Rent",
-      bedrooms: 3,
-      bathrooms: 2,
-      size: "1,500 Sqft",
-      image: "/images/feature4.jpg",
-    },
-    {
-      id: 6,
-      title: "Luxurious Bungalow",
-      location: "Victoria Island, Nigeria",
-      price: "₦95,000,000",
-      type: "Buy",
-      bedrooms: 3,
-      bathrooms: 2,
-      size: "1,500 Sqft",
-      image: "/images/feature2.jpg",
-    },
-    {
-      id: 7,
-      title: "Loft Apartment",
-      location: "Victoria Island, Nigeria",
-      price: "₦95,000,000",
-      type: "Buy",
-      bedrooms: 3,
-      bathrooms: 2,
-      size: "1,500 Sqft",
-      image: "/images/feature7.jpg",
-    },
-  ];
-
   return (
     <div className="py-12 bg-[#F2F2F2]">
       {/* Header */}
@@ -136,9 +57,9 @@ export default function FeaturedListings() {
                 alt={listing.title}
                 width={400}
                 height={300}
-                className="w-full h-64 object-cover rounded-t-2xl"
+                className="w-full h-64 object-cover"
               />
-              <FaHeart className="absolute top-4 right-4 text-2xl text-[#FFEDE6] hover:text-[#FF4500] transition cursor-pointer" />
+              <HeartIcon className="absolute top-4 right-4 text-2xl w-6 text-[#FFEDE6] hover:text-[#FF4500] transition cursor-pointer" />
             </div>
             {/* Content */}
             <div className="p-4">
@@ -183,7 +104,7 @@ export default function FeaturedListings() {
                 </span>
               </div>
               {/* Button */}
-              <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF5722] active:bg-[#FF8A65] transition duration-300">
+              <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF4500] active:bg-[#FF8A65] transition duration-300">
                 View Details &gt;
               </button>
             </div>
