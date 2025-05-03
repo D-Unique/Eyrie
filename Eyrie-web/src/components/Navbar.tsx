@@ -11,7 +11,13 @@ export default function Navbar() {
       {/* Logo */}
       <div className="flex items-center">
         <Link href="/">
-          <div className="font-bold text-xl">Eyrie™</div>
+          <Image
+            src="/images/logo.jpg"
+            alt="Eyrie Logo"
+            width={120}
+            height={40}
+            className="object-contain"
+          />
         </Link>
       </div>
 
