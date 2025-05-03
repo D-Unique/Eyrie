@@ -1,4 +1,4 @@
-import { listings } from "../data/listingsData";
+import { listings } from "../Data/listingsData";
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { FaBed, FaBath } from "react-icons/fa";
