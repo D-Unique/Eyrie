@@ -7,5 +7,8 @@ export const JwtRefSecret: string = process.env.JWT_REFRESH_SECRET || "default_r
 export const GoogleClientId: string = process.env.GOOGLE_CLIENT_ID || "default_google_client_id"
 export const GoogleClientSecret: string = process.env.GGOOGLE_CLIENT_SECRET || "default_google_client_Secret"
 export const sessionSecret: string = process.env.SESSION_SECRET || "your-session-secret"
+export const uuid5NameSpace: string = process.env.UUID_NAMESPACE || "uuid5_NameSpace"
+export const adminEmail: string = process.env.ADMIN_EMAIL || "afroeyrie@gmail.com"
+export const emailPass: string = process.env.EMAIL_APPPASS || "stsi awbv nelm zdtk"
 
 

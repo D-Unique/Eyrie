@@ -1,6 +1,7 @@
 import mysql2 from 'mysql2/promise';
 import dotenv from 'dotenv';
 import { Connection } from 'mysql2/promise';
+import knex from 'knex';
 // import config from "../config/db.config"
 // import { dbConfigType } from "../interface/Config.interface"
 dotenv.config();
@@ -105,6 +106,22 @@ export class ManageMysqlTables {
        
       }
 }
+
+
+
+
+//USING KNEX - A Quary Builder
+
+export const knexDb = knex({
+  client: 'mysql2',
+  connection: {
+    host: 'mysqlDb',
+    user: 'root',
+    password: 'rootpassword',
+    database: 'EyrieMysqlDb',
+    port: 3306,
+  },
+});
 
 
 export const manageMysqlDB = new ManageMysqlDB()

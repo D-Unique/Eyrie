@@ -2,7 +2,7 @@
 FROM amd64/node:18-alpine
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /dockerapp
 
 # Copy package.json and package-lock.json (or yarn.lock) first to take advantage of Docker layer caching
 COPY package.json package-lock.json ./

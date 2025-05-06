@@ -6,7 +6,7 @@ services:
       watch:
         - action: sync
           path: ./app
-          target: /app/app
+          target: /dockerapp/app
           ignore:
             - node_modules/
         - action: rebuild
@@ -14,8 +14,12 @@ services:
     container_name: express-server
     ports:
       - "3000:3000"
+    volumes:
+      - ./app/Public/Images:/dockerapp/app/Public/Images
+      - ./app/Public/Videos:/dockerapp/app/Public/Videos
+      - ./app/logs/app.log:/dockerapp/app/logs/app.log
     environment:
-      - MYSQL_HOST=mysql
+      - MYSQL_HOST=mysqlDb
       - MYSQL_USER=root
       - MYSQL_PASSWORD=rootpassword
       - MYSQL_DATABASE=EyrieMysqlDb

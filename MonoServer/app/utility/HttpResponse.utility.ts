@@ -54,6 +54,15 @@ export class HttpResponse {
         status: 409,
         message,
       };
+  }
+  
+  static PayloadTooLarge(data: DataType | null = null, message = "Payload Too Large") {
+    return {
+      status: 413,
+      message,
+      data
+    };
+      
     }
   
     static UnprocessableEntity(data: DataType | null = null, message = 'Unprocessable Entity',) {

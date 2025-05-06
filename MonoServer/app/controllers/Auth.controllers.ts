@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Response, Request } from "express";
 import { JwtRefSecret} from "../utility/Constant.utility";
 import redis from "../database/Redis.database";
 import jwt from "jsonwebtoken"
@@ -13,10 +13,14 @@ import { RowDataPacket } from 'mysql2';
 
 declare module "express-serve-static-core" {
     interface Request {
-        token?: string;
-        payload?: string | jwt.JwtPayload;
-    }
-}
+          token?: string;
+          payload?: jwt.JwtPayload;
+          id?: number;
+        houseId?: number;
+        houseUuid?: string;
+        tempHouseId?: string
+      }
+  }
 
 const mqlconnection = manageMysqlDB.getConnection()
 
@@ -83,14 +87,17 @@ export class AuthController {
 
             // generate JWT-ACCESSTOKEN
             const payload = {
-                first_name: user.first_name as string, role: user.role as string, email: user.email as string
+                first_name: user.first_name as string, role: user.role as string, user_email: user.email as string, user_id: user.id as number
             }
+            console.log("loging in")
+            console.log(payload.user_id)
+            console.log(payload.role)
             const accessToken = generateJwtToken(payload)
             const refreshAccessToken = generateRefreshJwtToken(payload)
 
             // save refresh-token on redis
             await redis.set(refreshAccessToken as string, JSON.stringify(payload), 'EX', 50)
-            return res.json(HttpResponse.OK({ accessToken, refreshAccessToken }, "login successful"));   
+            return res.json(HttpResponse.OK({ accessToken, refreshAccessToken }, "login uccessful"));   
         }
         catch (err) {
             console.log(err)
@@ -119,7 +126,7 @@ export class AuthController {
             if (!verified || typeof verified === 'string') {
                 return res.json(HttpResponse.Forbidden( "Invalid refresh token"));
             }
-            const payload = { first_name: verified.first_name, role: verified.role, email: verified.email }
+            const payload = { first_name: verified.first_name, role: verified.role, user_email: verified.user_email, user_id: verified.user_id }
             const accessToken = generateJwtToken(payload)
             return res.json(HttpResponse.Created({accessToken}, "accessToken reCreated"))
             

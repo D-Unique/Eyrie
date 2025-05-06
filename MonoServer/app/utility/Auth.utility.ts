@@ -4,7 +4,7 @@ import { jwtPayloadType } from '../interface/Auth.interface'
 
 export function generateJwtToken(user:jwtPayloadType) {
         try {
-            const accessToken = jwt.sign(user, JwtSecret, { expiresIn: '15s' })
+            const accessToken = jwt.sign(user, JwtSecret, { expiresIn: '1h' })
             return accessToken
         }
         catch (err) {

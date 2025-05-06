@@ -5,19 +5,20 @@ import { JwtSecret } from "../utility/Constant.utility"
 
 
 export async function varifyJwtToken(req: Request, res: Response, next: NextFunction) {
-    try {
-        const authHeader = req.headers['authorization']
-        const token = authHeader?.split(' ')[1]
+    let token;
+    const authHeader = req.headers.authorization
+    if (authHeader && authHeader.startsWith('Bearer')) {
+        token = authHeader.split(' ')[1]
         if (!token) {
-            return res.json(HttpResponse.Unauthorized)
+            return res.json(HttpResponse.Unauthorized("No Token, authorization denied"))
         }
-        const payload = verifyToken(token, JwtSecret)
-        if (payload === null) return res.json(HttpResponse.Forbidden)
-        req.payload = payload
-        next()
-    } catch (err) {
-        console.log(err)
-        return res.json(HttpResponse.Forbidden)
+            const payload = verifyToken(token, JwtSecret)
+            if (payload === null) return res.json(HttpResponse.Unauthorized("Invalid Token, authorization denied"))
+            req.payload = payload
+            next()
+    }
+    else {
+        return res.json(HttpResponse.Unauthorized("No Token, authorization denied"))
     }
 
 }
