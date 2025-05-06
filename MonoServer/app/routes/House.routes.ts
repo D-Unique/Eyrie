@@ -10,6 +10,7 @@ import { varifyJwtToken } from "../middleware/verifyJwtMiddleware";
 export const houseRouter = Router()
 
 houseRouter.post("/upload", varifyJwtToken, roleGuard(['admin', 'seller', 'Buyer']), fileupload, filePayloadExists, fileExtLimiter(['.jpg', '.png', '.jpeg']), fileSizeLimiter, HouseController.uploadhouse)
-houseRouter.post("/update/:houseId", varifyJwtToken, roleGuard(['admin', 'seller', 'Buyer']), fileupload, filePayloadExists, fileExtLimiter(['.jpg', '.png', '.jpeg']), fileSizeLimiter,  HouseController.updatehouse)
+houseRouter.post("/update/:houseId", varifyJwtToken, roleGuard(['admin', 'seller', 'Buyer']), fileupload, filePayloadExists, fileExtLimiter(['.jpg', '.png', '.jpeg']), fileSizeLimiter, HouseController.updatehouse)
+houseRouter.get('/delete/:houseId', varifyJwtToken, roleGuard(['admin', 'seller', 'Buyer']), HouseController.deletehouse)
 
 

@@ -15,7 +15,8 @@ userRouter.get("/admin", varifyJwtToken, roleGuard(['admin']), UserController.ad
 userRouter.get("/admin/approve/:houseId", varifyJwtToken, roleGuard(['admin', 'Buyer']), UserController.approve)
 // userRouter.get("/admin/approve", varifyJwtToken, roleGuard(['admin', 'seller', 'Buyer']), fileupload, filePayloadExists, fileExtLimiter(['.jpg', '.png', '.jpeg']), fileSizeLimiter,writeFileToFileSystem, UserController.approve)
 userRouter.get("/admin/disapprove", varifyJwtToken, roleGuard(['admin']), UserController.disapprove)
-userRouter.get("/sellers", varifyJwtToken, roleGuard(['admin', 'seller']), UserController.sell)
+userRouter.get("/sellers/lebelledsold/:houseId", varifyJwtToken, roleGuard(['admin', 'seller']), UserController.lebelledsold)
+
 
 export default userRouter;
 

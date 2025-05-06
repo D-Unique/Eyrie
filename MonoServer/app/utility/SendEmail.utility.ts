@@ -30,5 +30,4 @@ const sendMail = async(senderName: string, senderEmail: string, recipientEmail: 
 
 };
 
-
 export default sendMail;

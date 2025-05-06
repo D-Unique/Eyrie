@@ -18,7 +18,20 @@ export class HttpResponse {
         message,
         data,
       };
+  }
+  static Accepted() {
+    return {
+      status: 202,
+      message: "Accepted"
+     }
+   }
+  
+  static Nocontent() {
+    return {
+      status: 204,
+      message: "No Content"
     }
+  }
   
     static BadRequest(data: DataType | null= null, message = 'Bad Request',) {
       return {

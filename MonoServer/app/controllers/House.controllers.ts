@@ -5,6 +5,7 @@ import { UploadedFile } from "express-fileupload";
 import fs from 'fs/promises'
 import path from "path";
 import generateSecureRandomString from "../utility/GenerateRandom.utility";
+import { Logger } from "../utility/Logger.utility";
 
 
 
@@ -122,7 +123,7 @@ static async updatehouse(req: Request, res: Response) {
   try {
      const record = await knexDb("houses").where({ id: houseId }).first();
      if (!record) {
-      return res.json(HttpResponse.BadRequest(null, "House does not exist"));
+      return res.json(HttpResponse.NotFound("House does not exist"));
     }
 
      
@@ -205,7 +206,41 @@ static async updatehouse(req: Request, res: Response) {
     console.error("Unexpected error:", err);
     return res.json(HttpResponse.InternalServerError(`${err}`));
   }
-}
+  }
+  
+  static async deletehouse(req: Request, res: Response) {
+    const houseId = req.params.houseId
+    const payload = req.payload
+
+    if (!houseId) return res.json(HttpResponse.BadRequest(null, "House ID Param Must Be Provided"))
+    
+    const record = await knexDb('houses').where({ id: houseId }).first()
+    const sellerCanDelete = payload?.role === 'Seller' && (record.status === 'pending' || record.status === 'disapproved');
+    const adminCanDelete = payload?.role === 'Admin' && (record.status === 'approved' || record.status === 'sold');
+
+    if (!(sellerCanDelete || adminCanDelete)) {
+      Logger.info(`User with email ${payload?.user_email} tried to delete a ${record.status} Property`);
+      return res.json(HttpResponse.Unauthorized(`You are not allowed to delete ${record.status} properties`));
+    }
+    
+    const trx = await knexDb.transaction()
+    
+    try {
+    
+      await trx('houses').where({ id: houseId }).del()
+      await trx('videos').where({ house_id: houseId }).del()
+      await trx('images').where({ house_id: houseId }).del()
+
+      await trx.commit()
+      Logger.info(`Property with ID: ${houseId} deleted`)
+      return res.json(HttpResponse.Nocontent())
+    } catch (err) {
+      Logger.critical(`Property with ID: ${houseId} Failed to delete. ${err}`)
+      await trx.rollback()
+      return res.json(HttpResponse.InternalServerError(`Error deleting Property with ID: ${houseId}`))
+    }
+    
+  }
 
 }
 
