@@ -19,15 +19,15 @@ export default function Dashboard() {
         </div>
         {/* User Actions */}
         <div className="flex items-center space-x-2 mt-4 md:mt-0 ml-auto md:ml-0">
-          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md">
+          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500]">
             <HeartIcon className="w-6 h-6 text-black" />
             <span className="ml-2 text-sm text-[#161616] hidden sm:inline">en</span>
           </button>
-          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md">
+          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500]">
             <HeartIcon className="w-6 h-6 text-black" />
             <span className="ml-2 text-sm text-[#161616] hidden sm:inline">Wishlists</span>
           </button>
-          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md">
+          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500]">
             <KeyIcon className="w-6 h-6 text-black" />
             <span className="ml-2 text-sm text-[#161616] hidden sm:inline">Saved</span>
           </button>
@@ -37,7 +37,7 @@ export default function Dashboard() {
               alt="User Profile"
               width={40}
               height={40}
-              className="rounded-full"
+              className="rounded-full cursor-pointer"
             />
           </div>
         </div>
