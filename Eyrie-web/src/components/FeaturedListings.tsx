@@ -15,7 +15,7 @@ type Listing = {
   bedrooms: number;
   bathrooms: number;
   size: string;
-  type: "Buy" | "Rent";
+  type: string;
 };
 
 export const BuyBadgeIcon = () => (
