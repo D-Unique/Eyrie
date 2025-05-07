@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { listings } from "../data/listingsData";
+import { listings } from "../Data/listingsData";
 import { HomeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import Pagination from "./Pagination";
 

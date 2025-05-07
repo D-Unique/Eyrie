@@ -1,4 +1,4 @@
-import { listings } from '@/data/listingsData';
+import { listings } from '@/Data/listingsData';
 import { notFound } from 'next/navigation';
 import ListingDetails from '@/components/ListingDetails';
 

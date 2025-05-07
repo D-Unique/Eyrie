@@ -1,4 +1,4 @@
-import { listings } from "../data/listingsData";
+import { listings } from "../Data/listingsData";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
