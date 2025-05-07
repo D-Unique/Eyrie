@@ -1,16 +1,40 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HorizontalScrollSection from "@/components/HorizontalScrollSection";
 import FeaturedListings from "@/components/FeaturedListings";
 import PopularListings from "@/components/PopularListings";
+import RecentlyViewed from "@/components/RecentlyViewed";
 import SearchBar from "@/components/SearchBar";
 import CategorySidebar from "@/components/CategorySidebar";
 import FilterSidebar from "@/components/FilterSidebar";
 import KeyGraphic from "@/components/key";
 import FlashSalesTimer from "@/components/FlashSalesTimer";
 import Footer from "@/components/Footer";
+
+// Define promotional banner images
+const promotionalBanners = [
+  {
+    id: 1,
+    image: "/images/banner1.jpg",
+    alt: "New Properties Banner",
+    link: "/new-properties",
+  },
+  {
+    id: 2,
+    image: "/images/banner2.jpg",
+    alt: "Premium Listings Banner",
+    link: "/premium-listings",
+  },
+  {
+    id: 3,
+    image: "/images/banner3.jpg",
+    alt: "Special Offers Banner",
+    link: "/special-offers",
+  },
+];
 
 const openHouseImages = [
   "/images/feature1.jpg",
@@ -103,6 +127,39 @@ export default function Markeplace() {
 
             <div className="mt-10">
               <PopularListings title="Popular Listings" />
+            </div>
+
+            <div className="py-6">
+              {/* Promotional Banners */}
+              <div className="mb-10 max-w-6xl mx-auto px-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-bold">Special Offers</h2>
+                  <button className="text-sm font-medium text-gray-500 hover:text-gray-800">
+                    View All
+                  </button>
+                </div>
+
+                {/* Horizontally aligned banner images */}
+                <div className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar">
+                  {promotionalBanners.map((banner) => (
+                    <a
+                      key={banner.id}
+                      href={banner.link}
+                      className="min-w-[280px] sm:min-w-[320px] h-[160px] rounded-2xl flex-shrink-0 overflow-hidden"
+                    >
+                      <Image
+                        src={banner.image}
+                        alt={banner.alt}
+                        width={320}
+                        height={160}
+                        className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-300"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+              {/* Recently Viewed Listings */}
+              <RecentlyViewed />
             </div>
           </div>
         </div>
