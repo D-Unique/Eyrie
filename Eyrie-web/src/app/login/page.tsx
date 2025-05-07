@@ -33,8 +33,9 @@ export default function Login() {
       </div>
 
       {/* Login Form */}
-      <div className="absolute inset-0 flex items-center justify-center p-4 z-10 overflow-y-auto">
-        <div className="bg-white w-full max-w-sm p-4 sm:p-6 rounded-[24px] border border-[#B53100] flex flex-col gap-4 max-h-screen overflow-y-auto">
+      <div className="relative flex flex-col min-h-screen items-center justify-center p-4 z-10">
+
+        <div className="bg-white w-full max-w-sm p-4 sm:p-6 rounded-[24px] border border-[#B53100] flex flex-col gap-4">
           <h1 className="text-2xl sm:text-2xl font-bold text-center text-[#161616]">
             Welcome Back!
           </h1>
@@ -45,8 +46,13 @@ export default function Login() {
           {/* Social Login Buttons */}
           <button className="flex items-center justify-center w-full bg-gray-100 text-black text-sm py-2 px-4 rounded-xl hover:bg-[#B6B6B6] transition duration-300">
             <Image
-              src="/images/google-icon.svg" alt="Google" width={20} height={20} className="mr-2"
+              src="/images/google-icon.svg"
+              alt="Google"
+              width={20}
+              height={20}
+              className="mr-2"
             />
+            Login with Google
           </button>
 
           <p className="text-center text-sm text-[#919191]">
@@ -59,7 +65,10 @@ export default function Login() {
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-bold text-[#161616]">
+              <label
+                htmlFor="email"
+                className="block text-sm font-bold text-[#161616]"
+              >
                 Your Email
               </label>
               <input
@@ -70,22 +79,25 @@ export default function Login() {
                 onChange={handleChange}
                 required
                 placeholder="Enter your email"
-                className="mt-1 block w-full px-4 py-2 bg-[#FBFBFB] border border-[B6B6B6] rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500 focus:outline-none"
+                className="mt-1 block w-full px-4 py-2 bg-[#FBFBFB] border border-[#B6B6B6] rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500 focus:outline-none"
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-bold text-[#161616]">
-              Password
+              <label
+                htmlFor="password"
+                className="block text-sm font-bold text-[#161616]"
+              >
+                Password
               </label>
               <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              placeholder="Enter your password"
-              className="mt-1 block w-full px-4 py-2 bg-[#FBFBFB] border border-[B6B6B6] rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500 focus:outline-none"
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                placeholder="Enter your password"
+                className="mt-1 block w-full px-4 py-2 bg-[#FBFBFB] border border-[#B6B6B6] rounded-xl shadow-sm focus:ring-orange-500 focus:border-orange-500 focus:outline-none"
               />
             </div>
             <button
@@ -95,6 +107,11 @@ export default function Login() {
               Get Started
             </button>
           </form>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-8 text-center">
+          <p className="text-3xl sm:text-4xl md:text-5xl font-black text-[#161616]">Eyrie™</p>
         </div>
       </div>
     </div>

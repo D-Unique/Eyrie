@@ -1,5 +1,5 @@
 "use client"; // This is a client component
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/LandingPageNavbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturedListings from "@/components/FeaturedListings";
 import WhatYouGet from "@/components/WhatYouGet";
