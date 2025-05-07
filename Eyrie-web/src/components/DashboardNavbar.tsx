@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from 'next/link';
 import { HeartIcon, KeyIcon, HomeIcon } from '@heroicons/react/24/outline';
 
 export default function Dashboard() {
@@ -19,18 +20,21 @@ export default function Dashboard() {
         </div>
         {/* User Actions */}
         <div className="flex items-center space-x-2 mt-4 md:mt-0 ml-auto md:ml-0">
-          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500]">
+          {/* Link to EN */}
+          <Link href="/dashboard/saved" className="flex items-center text-[#161616] justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500] hover:text-white hover:border-[#FF4500] active:bg-[#FF8A65] transition duration-300">
             <HeartIcon className="w-6 h-6 text-black" />
-            <span className="ml-2 text-sm text-[#161616] hidden sm:inline">en</span>
-          </button>
-          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500]">
+            <span className="ml-2 text-sm hidden sm:inline">en</span>
+          </Link>
+          {/* Link to WishList */}
+          <Link href="/dashboard/saved" className="flex items-center text-[#161616] justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500] hover:text-white hover:border-[#FF4500] active:bg-[#FF8A65] transition duration-300">
             <HeartIcon className="w-6 h-6 text-black" />
-            <span className="ml-2 text-sm text-[#161616] hidden sm:inline">Wishlists</span>
-          </button>
-          <button className="flex items-center justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500]">
+            <span className="ml-2 text-sm hidden sm:inline">Wishlists</span>
+          </Link>
+          {/* Link to Saved Listings */}
+          <Link href="/dashboard/saved" className="flex items-center text-[#161616] justify-center bg-white rounded-full p-2 shadow-md hover:bg-[#FF4500] hover:text-white hover:border-[#FF4500] active:bg-[#FF8A65] transition duration-300">
             <KeyIcon className="w-6 h-6 text-black" />
-            <span className="ml-2 text-sm text-[#161616] hidden sm:inline">Saved</span>
-          </button>
+            <span className="ml-2 text-sm hidden sm:inline">Saved</span>
+          </Link>
           <div className="bg-white rounded-full p-1 shadow-md">
             <Image
               src="/images/testimony1.jpg"
@@ -43,5 +47,5 @@ export default function Dashboard() {
         </div>
       </header>
     </div>
-  )
-};
+  );
+}

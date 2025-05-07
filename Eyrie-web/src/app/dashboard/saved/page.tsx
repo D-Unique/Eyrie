@@ -1,10 +1,10 @@
 "use client";
-import Dashboard from "@/components/Dashboard";
+import Saved from "@/components/Saved";
 
 export default function Home() {
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#F2F2F2]">
-      <Dashboard />
+      <Saved />
     </div>
   );
 }

@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { HomeIcon, PhoneIcon, ChatBubbleBottomCenterTextIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import {
+  HomeIcon,
+  PhoneIcon,
+  ChatBubbleBottomCenterTextIcon,
+  MapPinIcon,
+} from "@heroicons/react/24/outline";
 
 type ListingDetailsProps = {
   listing: {
@@ -36,11 +41,11 @@ export default function ListingDetails({ listing }: ListingDetailsProps) {
                   <span>&gt;&gt;</span>
                   <span className="text-[#161616]">Categories</span>
                   <span>&gt;&gt;</span>
-                  <span className="text-[#161616]">Bungalows</span>
+                  <span className="text-[#161616] truncate">Bungalows</span>
                 </div>
               </div>
-              <h1 className="text-2xl font-bold mb-4">Bungalows</h1>
-              <p className="text-sm text-[#555]">
+              <h1 className="text-2xl font-bold mb-4 truncate">{listing.title}</h1>
+              <p className="text-sm text-[#555] truncate">
                 Get the best-suited bungalows at the best prices
               </p>
             </div>
@@ -76,16 +81,18 @@ export default function ListingDetails({ listing }: ListingDetailsProps) {
             {/* Property Details */}
             <div className="mb-6">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-2">
-                <h1 className="text-2xl text-[#161616] font-bold">{listing.title}</h1>
+                <h1 className="text-2xl text-[#161616] font-bold truncate">
+                  {listing.title}
+                </h1>
                 <button className="w-full sm:w-auto px-4 py-2 bg-[#F4FFFE] text-[#0B655B] font-bold border border-[#43C6B8] rounded-full hover:bg-[#00C853] hover:text-white transition">
                   Save for Later
                 </button>
               </div>
-              <p className="text-[#555] mb-4 flex items-center gap-2">
+              <p className="text-[#555] mb-4 flex items-center gap-2 truncate">
                 <MapPinIcon className="h-6 w-6 text-[#FF4500]" />
                 {listing.location}
               </p>
-              <p className="text-[#555] mb-4">{listing.description}</p>
+              <p className="text-[#555] mb-4 truncate">{listing.description}</p>
               <div className="border-b border-[#161616] mt-8"></div>
             </div>
 
@@ -93,8 +100,10 @@ export default function ListingDetails({ listing }: ListingDetailsProps) {
             <div className="mb-6 bg-[#F2F2F2]">
               {/* Top Row: Cost label and Price */}
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl text-[#161616] font-bold">Cost</h2>
-                <p className="text-2xl font-bold text-[#161616]">{listing.price}</p>
+                <h2 className="text-2xl text-[#161616] font-bold truncate">Cost</h2>
+                <p className="text-2xl font-bold text-[#161616] truncate">
+                  {listing.price}
+                </p>
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 lg:gap-12">
                 <button className="px-8 py-3 text-[#5E2B97] font-bold text-sm border bg-[#FAF6FF] border-[#7E55AC] rounded-full hover:bg-[#7E3AF2] hover:text-white transition">
@@ -111,7 +120,9 @@ export default function ListingDetails({ listing }: ListingDetailsProps) {
 
             {/* Contact Section */}
             <div className="mt-6">
-              <p className="text-sm text-[#161616] mb-4">For more enquiries, contact us via</p>
+              <p className="text-sm text-[#161616] mb-4 truncate">
+                For more enquiries, contact us via
+              </p>
               <div className="flex flex-wrap gap-4">
                 <button className="flex items-center justify-center text-[#B53100] gap-2 px-24 py-3 sm:px-24 md:px-28 lg:px-48 bg-[#FFEDE6] border border-[#FF4500] rounded-full hover:bg-[#FF4500] hover:text-white transition">
                   <PhoneIcon className="h-5 w-5" />

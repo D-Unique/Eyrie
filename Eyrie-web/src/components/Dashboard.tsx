@@ -1,10 +1,11 @@
 import { listings } from "../data/listingsData";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBed, FaBath } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
-import { HeartIcon, HomeIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, HomeIcon } from "@heroicons/react/24/outline";
+import Pagination from "./Pagination";
 
 // BuyBadgeIcon.jsx
 export const BuyBadgeIcon = () => (
@@ -16,7 +17,7 @@ export const BuyBadgeIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M15.24 6.20143C14.9707 5.92 14.6921 5.63 14.5871 5.375C14.49 5.14143 14.4843 4.75429 14.4786 4.37929C14.4679 3.68214 14.4564 2.89214 13.9071 2.34286C13.3579 1.79357 12.5679 1.78214 11.8707 1.77143C11.4957 1.76571 11.1086 1.76 10.875 1.66286C10.6207 1.55786 10.33 1.27929 10.0486 1.01C9.55571 0.536429 8.99571 0 8.25 0C7.50429 0 6.945 0.536429 6.45143 1.01C6.17 1.27929 5.88 1.55786 5.625 1.66286C5.39286 1.76 5.00429 1.76571 4.62929 1.77143C3.93214 1.78214 3.14214 1.79357 2.59286 2.34286C2.04357 2.89214 2.03571 3.68214 2.02143 4.37929C2.01571 4.75429 2.01 5.14143 1.91286 5.375C1.80786 5.62929 1.52929 5.92 1.26 6.20143C0.786429 6.69429 0.25 7.25429 0.25 8C0.25 8.74571 0.786429 9.305 1.26 9.79857C1.52929 10.08 1.80786 10.37 1.91286 10.625C2.01 10.8586 2.01571 11.2457 2.02143 11.6207C2.03214 12.3179 2.04357 13.1079 2.59286 13.6571C3.14214 14.2064 3.93214 14.2179 4.62929 14.2286C5.00429 14.2343 5.39143 14.24 5.625 14.3371C5.87929 14.4421 6.17 14.7207 6.45143 14.99C6.94429 15.4636 7.50429 16 8.25 16C8.99571 16 9.555 15.4636 10.0486 14.99C10.33 14.7207 10.62 14.4421 10.875 14.3371C11.1086 14.24 11.4957 14.2343 11.8707 14.2286C12.5679 14.2179 13.3579 14.2064 13.9071 13.6571C14.4564 13.1079 14.4679 12.3179 14.4786 11.6207C14.4843 11.2457 14.49 10.8586 14.5871 10.625C14.6921 10.3707 14.9707 10.08 15.24 9.79857C15.7136 9.30571 16.25 8.74571 16.25 8C16.25 7.25429 15.7136 6.695 15.24 6.20143ZM11.5114 6.69L7.51143 10.69C7.45836 10.7431 7.39534 10.7853 7.32597 10.814C7.2566 10.8428 7.18224 10.8576 7.10714 10.8576C7.03205 10.8576 6.95769 10.8428 6.88832 10.814C6.81895 10.7853 6.75593 10.7431 6.70286 10.69L4.98857 8.97571C4.88135 8.86849 4.82111 8.72307 4.82111 8.57143C4.82111 8.41979 4.88135 8.27437 4.98857 8.16714C5.09579 8.05992 5.24122 7.99968 5.39286 7.99968C5.54449 7.99968 5.68992 8.05992 5.79714 8.16714L7.10714 9.47786L10.7029 5.88143C10.7559 5.82834 10.819 5.78622 10.8883 5.75749C10.9577 5.72876 11.0321 5.71397 11.1071 5.71397C11.1822 5.71397 11.2566 5.72876 11.3259 5.75749C11.3953 5.78622 11.4583 5.82834 11.5114 5.88143C11.5645 5.93452 11.6066 5.99755 11.6354 6.06692C11.6641 6.13628 11.6789 6.21063 11.6789 6.28571C11.6789 6.3608 11.6641 6.43514 11.6354 6.50451C11.6066 6.57388 11.5645 6.63691 11.5114 6.69Z"
+      d="M15.24 6.20143C14.9707 5.92 14.6921 5.63 14.5871 5.375C14.49 5.14143 14.4843 4.75429 14.4786 4.37929C14.4679 3.68214 14.4564 2.89214 13.9071 2.34286C13.3579 1.79357 12.5679 1.78214 11.8707 1.77143C11.4957 1.76571 11.1086 1.76 10.875 1.66286C10.6207 1.55786 10.33 1.27929 10.0486 1.01C9.55571 0.536429 8.99571 0 8.25 0C7.50429 0 6.945 0.536429 6.45143 1.01C6.17 1.27929 5.88 1.55786 5.625 1.66286C5.39286 1.76 5.00429 1.76571 4.62929 1.77143C3.93214 1.78214 3.14214 1.79357 2.59286 2.34286C2.04357 2.89214 2.03571 3.68214 2.02143 4.37929C2.01571 4.75429 2.01 5.14143 1.91286 5.375C1.80786 5.62929 1.52929 5.92 1.26 6.20143C0.786429 6.69429 0.25 7.25429 0.25 8C0.25 8.74571 0.786429 9.305 1.26 9.79857C1.52929 10.08 1.80786 10.37 1.91286 10.625C2.01 10.8586 2.01571 11.2457 2.02143 11.6207C2.03214 12.3179 2.04357 13.1079 2.59286 13.6571C3.14214 14.2064 3.93214 14.2179 4.62929 14.2286C5.00429 14.2343 5.39143 14.24 5.625 14.3371C5.87929 14.4421 6.17 14.7207 6.45143 14.99C6.94429 15.4636 7.50429 16 8.25 16C8.99571 16 9.555 15.4636 10.0486 14.99C10.33 14.7207 10.62 14.4421 10.875 14.3371C11.1086 14.24 11.4957 14.2343 11.8707 14.2286C12.5679 14.2179 13.3579 14.2064 13.9071 13.6571C14.4564 13.1079 14.4679 12.3179 14.4786 11.6207C14.4843 11.2457 14.49 10.8586 14.5871 10.625C14.6921 10.37 14.9707 10.08 15.24 9.79857C15.7136 9.30571 16.25 8.74571 16.25 8C16.25 7.25429 15.7136 6.695 15.24 6.20143ZM11.5114 6.69L7.51143 10.69C7.45836 10.7431 7.39534 10.7853 7.32597 10.814C7.2566 10.8428 7.18224 10.8576 7.10714 10.8576C7.03205 10.8576 6.95769 10.8428 6.88832 10.814C6.81895 10.7853 6.75593 10.7431 6.70286 10.69L4.98857 8.97571C4.88135 8.86849 4.82111 8.72307 4.82111 8.57143C4.82111 8.41979 4.88135 8.27437 4.98857 8.16714C5.09579 8.05992 5.24122 7.99968 5.39286 7.99968C5.54449 7.99968 5.68992 8.05992 5.79714 8.16714L7.10714 9.47786L10.7029 5.88143C10.7559 5.82834 10.819 5.78622 10.8883 5.75749C10.9577 5.72876 11.0321 5.71397 11.1071 5.71397C11.1822 5.71397 11.2566 5.72876 11.3259 5.75749C11.3953 5.78622 11.4583 5.82834 11.5114 5.88143C11.5645 5.93452 11.6066 5.99755 11.6354 6.06692C11.6641 6.13628 11.6789 6.21063 11.6789 6.28571C11.6789 6.3608 11.6641 6.43514 11.6354 6.50451C11.6066 6.57388 11.5645 6.63691 11.5114 6.69Z"
       fill="#FFB800"
     />
   </svg>
@@ -39,6 +40,21 @@ export const RentBadgeIcon = () => (
 );
 
 export default function Dashboard() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(listings.length / itemsPerPage);
+
+  // Get the listings for the current page
+  const currentListings = listings.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="min-h-screen bg-[#F2F2F2]">
       {/* Main Content */}
@@ -88,24 +104,26 @@ export default function Dashboard() {
 
           {/* Main Content */}
           <main className="lg:col-span-3">
-          <div className="mb-6 px-4">
-            <div className="flex items-center text-sm text-[#555] space-x-2 mb-6">
-              <HomeIcon className="h-5 w-5 text-[#161616]" />
-              <div className="flex items-center space-x-1">
-                <span className="text-[#161616]">Main Page</span>
-                <span>&gt;&gt;</span>
-                <span className="text-[#161616]">Categories</span>
-                <span>&gt;&gt;</span>
-                <span className="text-[#161616]">Bungalows</span>
+            <div className="mb-6 px-4">
+              <div className="flex items-center text-sm text-[#555] space-x-2 mb-6">
+                <HomeIcon className="h-5 w-5 text-[#161616]" />
+                <div className="flex items-center space-x-1">
+                  <span className="text-[#161616]">Main Page</span>
+                  <span>&gt;&gt;</span>
+                  <span className="text-[#161616]">Categories</span>
+                  <span>&gt;&gt;</span>
+                  <span className="text-[#161616]">Bungalows</span>
+                </div>
               </div>
+              <h1 className="text-2xl font-bold mb-4">Bungalows</h1>
+              <p className="text-sm text-[#555]">
+                Get the best-suited bungalows at the best prices
+              </p>
             </div>
-            <h1 className="text-2xl font-bold mb-4">Bungalows</h1>
-            <p className="text-sm text-[#555]">Get the best-suited bungalows at the best prices</p>
-          </div>
 
             {/* Listings Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl px-4 mx-auto">
-              {listings.map((listing) => (
+              {currentListings.map((listing) => (
                 <div
                   key={listing.id}
                   className="bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200"
@@ -124,10 +142,10 @@ export default function Dashboard() {
                   <div className="p-4">
                     {/* Price and Badge */}
                     <div className="flex justify-between items-center">
-                      <p className="font-bold text-lg text-gray-800">
+                      <p className="font-bold text-lg text-gray-800 truncate">
                         {listing.price}
                       </p>
-      
+
                       <div className="flex items-center gap-1">
                         {listing.type === "Buy" ? (
                           <span className="flex items-center gap-1">
@@ -143,30 +161,33 @@ export default function Dashboard() {
                       </div>
                     </div>
                     {/* Title and Location */}
-                    <h3 className="text-gray-700 font-semibold text-base mb-1">
+                    <h3 className="text-gray-700 font-semibold text-base mb-1 truncate">
                       {listing.title}
                     </h3>
-                    <p className="text-gray-500 text-sm mb-4">{listing.location}</p>
+                    <p className="text-gray-500 text-sm mb-4 truncate">
+                      {listing.location}
+                    </p>
                     {/* Features */}
                     <div className="flex items-center justify-between text-gray-500 text-xs mb-4">
                       <span className="flex items-center space-x-1">
                         <FaBed className="text-gray-400" />
-                        <span>{listing.bedrooms} Bed</span>
+                        <span className="truncate">{listing.bedrooms} Bed</span>
                       </span>
                       <span className="flex items-center space-x-1">
                         <FaBath className="text-gray-400" />
-                        <span>{listing.bathrooms} Bath</span>
+                        <span className="truncate">{listing.bathrooms} Bath</span>
                       </span>
                       <span className="flex items-center space-x-1">
                         <MdSquareFoot className="text-gray-400" />
-                        <span>{listing.size}</span>
+                        <span className="truncate">{listing.size}</span>
                       </span>
                     </div>
                     {/* Button */}
-                    <Link href={`/listing/${listing.id}`} passHref>
-                      <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF4500] active:bg-[#FF8A65] transition duration-300">
-                        View Details &gt;
-                      </button>
+                    <Link
+                      href={`/dashboard/listing/${listing.id}`}
+                      className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF4500] hover:text-white hover:border-[#FF4500] active:bg-[#FF8A65] transition duration-300"
+                    >
+                      View Details &gt;
                     </Link>
                   </div>
                 </div>
@@ -174,36 +195,11 @@ export default function Dashboard() {
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-center mt-7 text-sm">
-              <div className="flex items-center space-x-2 bg-white shadow-md rounded-full px-2 py-2 overflow-x-auto md:overflow-visible">
-                <button className="px-4 py-2 text-[#161616] rounded-full hover:bg-gray-100 whitespace-nowrap">
-                  Previous
-                </button>
-
-                {/* Desktop View */}
-                <div className="hidden md:flex items-center space-x-2">
-                  <button className="px-4 py-2 bg-[#FF4500] text-white rounded-xl">1</button>
-                  <button className="px-4 py-2 text-[#161616] rounded-full hover:bg-gray-100">2</button>
-                  <button className="px-4 py-2 text-[#161616] rounded-full hover:bg-gray-100">3</button>
-                  <button className="px-4 py-2 text-[#161616] rounded-full hover:bg-gray-100">4</button>
-                  <button className="px-4 py-2 text-[#161616] rounded-full hover:bg-gray-100">5</button>
-                  <button className="px-4 py-2 text-[#161616] rounded-full hover:bg-gray-100">6</button>
-                  <span className="px-2 text-[#161616]">...</span>
-                </div>
-
-                {/* Mobile/Tablet View */}
-                <div className="flex md:hidden items-center space-x-1">
-                  <button className="px-3 py-1 bg-[#FF4500] text-white rounded-xl text-sm">1</button>
-                  <button className="px-3 py-1 text-[#161616] rounded-full hover:bg-gray-100 text-sm">2</button>
-                  <button className="px-3 py-1 text-[#161616] rounded-full hover:bg-gray-100 text-sm">3</button>
-                  <span className="px-1 text-[#161616] text-sm">...</span>
-                </div>
-
-                <button className="px-4 py-2 text-[#161616] rounded-full hover:bg-gray-100 whitespace-nowrap">
-                  Next
-                </button>
-              </div>
-            </div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </main>
         </div>
       </div>
