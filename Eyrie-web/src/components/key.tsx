@@ -22,7 +22,10 @@ const KeyGraphic = () => {
             Your Next <br />
             <span className="text-white">Property</span>
           </h2>
-          <p className="text-2xl mt-1">
+          <p
+            className="text-2xl mt-1"
+            style={{ zIndex: 1, position: "relative" }}
+          >
             Could just be <br /> few clicks away
           </p>
         </div>
