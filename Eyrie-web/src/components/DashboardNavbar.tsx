@@ -35,7 +35,7 @@ export default function Dashboard() {
             <KeyIcon className="w-6 h-6 text-black" />
             <span className="ml-2 text-sm hidden sm:inline">Saved</span>
           </Link>
-          <div className="bg-white rounded-full p-1 shadow-md">
+          <div className="bg-white rounded-full p-1 shadow-md hover:bg-[#FF4500]">
             <Image
               src="/images/testimony1.jpg"
               alt="User Profile"
