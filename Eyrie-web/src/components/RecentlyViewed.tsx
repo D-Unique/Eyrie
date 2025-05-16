@@ -72,7 +72,7 @@ export default function RecentlyViewed() {
               <div className="p-4">
                 {/* Price and Badge */}
                 <div className="flex justify-between items-center">
-                  <p className="font-bold text-lg text-gray-800">
+                  <p className="font-bold text-lg text-gray-800 truncate">
                     {listing.price}
                   </p>
 
@@ -91,23 +91,25 @@ export default function RecentlyViewed() {
                   </div>
                 </div>
                 {/* Title and Location */}
-                <h3 className="text-gray-700 font-semibold text-base mb-1">
+                <h3 className="text-gray-700 font-semibold text-base mb-1 truncate">
                   {listing.title}
                 </h3>
-                <p className="text-gray-500 text-sm mb-4">{listing.location}</p>
+                <p className="text-gray-500 text-sm mb-4 truncate">
+                  {listing.location}
+                </p>
                 {/* Features */}
                 <div className="flex items-center justify-between text-gray-500 text-xs mb-4">
                   <span className="flex items-center space-x-1">
                     <FaBed className="text-gray-400" />
-                    <span>{listing.bedrooms} Bed</span>
+                    <span className="truncate">{listing.bedrooms} Bed</span>
                   </span>
                   <span className="flex items-center space-x-1">
                     <FaBath className="text-gray-400" />
-                    <span>{listing.bathrooms} Bath</span>
+                    <span className="truncate">{listing.bathrooms} Bath</span>
                   </span>
                   <span className="flex items-center space-x-1">
                     <MdSquareFoot className="text-gray-400" />
-                    <span>{listing.size}</span>
+                    <span className="truncate">{listing.size}</span>
                   </span>
                 </div>
                 {/* Button */}
