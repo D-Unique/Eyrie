@@ -132,12 +132,7 @@ export default function Markeplace() {
             <div className="py-6">
               {/* Promotional Banners */}
               <div className="mb-10 max-w-6xl mx-auto px-4">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl font-bold">Special Offers</h2>
-                  <button className="text-sm font-medium text-gray-500 hover:text-gray-800">
-                    View All
-                  </button>
-                </div>
+                <div className="flex items-center justify-between mb-4"></div>
 
                 {/* Horizontally aligned banner images */}
                 <div className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar">
@@ -145,13 +140,13 @@ export default function Markeplace() {
                     <a
                       key={banner.id}
                       href={banner.link}
-                      className="min-w-[280px] sm:min-w-[320px] h-[160px] rounded-2xl flex-shrink-0 overflow-hidden"
+                      className="min-w-[307px] sm:min-w-[307px] h-[210px] rounded-2xl flex-shrink-0 overflow-hidden"
                     >
                       <Image
                         src={banner.image}
                         alt={banner.alt}
-                        width={320}
-                        height={160}
+                        width={307}
+                        height={210}
                         className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-300"
                       />
                     </a>

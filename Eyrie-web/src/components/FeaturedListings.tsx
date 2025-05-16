@@ -1,9 +1,22 @@
+import React, { useEffect, useState } from "react";
 import { listings } from "../Data/listingsData";
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { FaBed, FaBath } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
-import { HeartIcon } from "@heroicons/react/24/outline";
+
+// TypeScript type for a listing
+type Listing = {
+  id: number;
+  image: string;
+  title: string;
+  location: string;
+  price: string;
+  bedrooms: number;
+  bathrooms: number;
+  size: string;
+  type: string;
+};
 
 // BuyBadgeIcon.jsx
 export const BuyBadgeIcon = () => (
@@ -37,6 +50,14 @@ export const RentBadgeIcon = () => (
   </svg>
 );
 export default function FeaturedListings() {
+  const [randomListings, setRandomListings] = useState<Listing[]>([]);
+
+  useEffect(() => {
+    // Shuffle the listings array and select 8 random listings
+    const shuffledListings = [...listings].sort(() => Math.random() - 0.5);
+    setRandomListings(shuffledListings.slice(0, 8));
+  }, []);
+
   return (
     <div className="py-10">
       {/* Header */}
@@ -44,14 +65,14 @@ export default function FeaturedListings() {
         <h2 className="text-xl font-bold">Featured Listings</h2>
       </div>
       {/* Listings Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 lg:px-8">
-        {listings.map((listing) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl px-4 mx-auto">
+        {randomListings.map((listing) => (
           <div
             key={listing.id}
-            className="bg-white shadow-lg rounded-3xl overflow-hidden p-2"
+            className="bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200"
           >
             {/* Card Header with Image */}
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative">
               <Image
                 src={listing.image}
                 alt={listing.title}

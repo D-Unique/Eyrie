@@ -54,16 +54,16 @@ export default function RecentlyViewed() {
           {recentlyViewedListings.map((listing) => (
             <div
               key={listing.id}
-              className="min-w-[280px] flex-shrink-0 bg-white shadow-lg rounded-3xl overflow-hidden p-2"
+              className="bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200 flex-shrink-0 w-[280px]"
             >
               {/* Card Header with Image */}
-              <div className="relative rounded-2xl overflow-hidden">
+              <div className="relative">
                 <Image
                   src={listing.image}
                   alt={listing.title}
                   width={400}
                   height={300}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-64 object-cover"
                 />
                 {/* Wishlist Icon */}
                 <FaHeart className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer text-xl z-10" />
@@ -91,12 +91,10 @@ export default function RecentlyViewed() {
                   </div>
                 </div>
                 {/* Title and Location */}
-                <h3 className="text-gray-700 font-semibold text-base mb-1 truncate">
+                <h3 className="text-gray-700 font-semibold text-base mb-1">
                   {listing.title}
                 </h3>
-                <p className="text-gray-500 text-sm mb-4 truncate">
-                  {listing.location}
-                </p>
+                <p className="text-gray-500 text-sm mb-4">{listing.location}</p>
                 {/* Features */}
                 <div className="flex items-center justify-between text-gray-500 text-xs mb-4">
                   <span className="flex items-center space-x-1">
@@ -113,7 +111,7 @@ export default function RecentlyViewed() {
                   </span>
                 </div>
                 {/* Button */}
-                <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] flex items-center justify-center gap-[10px] hover:bg-[#FF4500] hover:text-white hover:border-[#FF4500] active:bg-[#FF8A65] transition duration-300">
+                <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF4500] active:bg-[#FF8A65] transition duration-300">
                   View Details &gt;
                 </button>
               </div>

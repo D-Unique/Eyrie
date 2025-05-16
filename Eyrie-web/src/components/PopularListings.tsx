@@ -1,44 +1,22 @@
+import React, { useEffect, useState } from "react";
+import { listings } from "../Data/PlistingsData";
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 import { FaBed, FaBath } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
-import { HeartIcon } from "@heroicons/react/24/outline";
 
-const listings = [
-  {
-    id: 1,
-    title: "Luxurious Bungalow",
-    location: "Lagos, Nigeria",
-    price: "₦70,000,000",
-    type: "Buy",
-    bedrooms: 3,
-    bathrooms: 2,
-    size: "1,500 Sqft",
-    image: "/images/feature1.jpg",
-  },
-  {
-    id: 2,
-    title: "Luxurious Duplex",
-    location: "Lagos, Nigeria",
-    price: "₦70,000,000",
-    type: "Rent",
-    bedrooms: 3,
-    bathrooms: 2,
-    size: "1,500 Sqft",
-    image: "/images/duplex2.jpg",
-  },
-  {
-    id: 3,
-    title: "Luxurious Semi detachable Duplex",
-    location: "Lagos, Nigeria",
-    price: "₦70,000,000",
-    type: "Rent",
-    bedrooms: 3,
-    bathrooms: 2,
-    size: "1,500 Sqft",
-    image: "/images/duplex.jpg",
-  },
-];
+// TypeScript type for a listing
+type Listing = {
+  id: number;
+  image: string;
+  title: string;
+  location: string;
+  price: string;
+  bedrooms: number;
+  bathrooms: number;
+  size: string;
+  type: string;
+};
 
 // BuyBadgeIcon.jsx
 export const BuyBadgeIcon = () => (
@@ -71,23 +49,30 @@ export const RentBadgeIcon = () => (
     />
   </svg>
 );
+export default function FeaturedListings() {
+  const [randomListings, setRandomListings] = useState<Listing[]>([]);
 
-export default function PopularListings() {
+  useEffect(() => {
+    // Shuffle the listings array and select 8 random listings
+    const shuffledListings = [...listings].sort(() => Math.random() - 0.5);
+    setRandomListings(shuffledListings.slice(0, 8));
+  }, []);
+
   return (
     <div className="py-10">
       {/* Header */}
       <div className="flex items-center justify-between px-4 max-w-6xl mx-auto mb-8">
-        <h2 className="text-xl font-bold">Featured Listings</h2>
+        <h2 className="text-xl font-bold">Popular Listings</h2>
       </div>
       {/* Listings Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 lg:px-8">
-        {listings.map((listing) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl px-4 mx-auto">
+        {randomListings.map((listing) => (
           <div
             key={listing.id}
-            className="bg-white shadow-lg rounded-3xl overflow-hidden p-2"
+            className="bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200"
           >
             {/* Card Header with Image */}
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative">
               <Image
                 src={listing.image}
                 alt={listing.title}
@@ -98,10 +83,9 @@ export default function PopularListings() {
               {/* Wishlist Icon */}
               <FaHeart className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer text-xl z-10" />
             </div>
-
             {/* Content */}
-            <div className="p-4 space-y-2">
-              {/* Price & Type */}
+            <div className="p-4">
+              {/* Price and Badge */}
               <div className="flex justify-between items-center">
                 <p className="font-bold text-lg text-gray-800">
                   {listing.price}
@@ -121,31 +105,28 @@ export default function PopularListings() {
                   )}
                 </div>
               </div>
-
-              {/* Title & Location */}
-              <h3 className="text-gray-700 font-semibold text-base">
+              {/* Title and Location */}
+              <h3 className="text-gray-700 font-semibold text-base mb-1">
                 {listing.title}
               </h3>
-              <p className="text-sm text-gray-500">{listing.location}</p>
-
+              <p className="text-gray-500 text-sm mb-4">{listing.location}</p>
               {/* Features */}
-              <div className="flex justify-between text-xs text-gray-500 mt-2">
-                <span className="flex items-center gap-1">
-                  <FaBed />
-                  {listing.bedrooms} Bed
+              <div className="flex items-center justify-between text-gray-500 text-xs mb-4">
+                <span className="flex items-center space-x-1">
+                  <FaBed className="text-gray-400" />
+                  <span>{listing.bedrooms} Bed</span>
                 </span>
-                <span className="flex items-center gap-1">
-                  <FaBath />
-                  {listing.bathrooms} Bath
+                <span className="flex items-center space-x-1">
+                  <FaBath className="text-gray-400" />
+                  <span>{listing.bathrooms} Bath</span>
                 </span>
-                <span className="flex items-center gap-1">
-                  <MdSquareFoot />
-                  {listing.size}
+                <span className="flex items-center space-x-1">
+                  <MdSquareFoot className="text-gray-400" />
+                  <span>{listing.size}</span>
                 </span>
               </div>
-
-              {/* View Button */}
-              <button className="mt-4 w-full text-sm py-2 border border-black rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300">
+              {/* Button */}
+              <button className="w-full h-[36px] px-[24px] py-[10px] bg-[#FBFBFB] text-[#000000] border border-[#000000] rounded-[32px] font-medium text-[12px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF4500] active:bg-[#FF8A65] transition duration-300">
                 View Details &gt;
               </button>
             </div>
