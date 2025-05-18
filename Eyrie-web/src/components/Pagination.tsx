@@ -39,7 +39,7 @@ export default function Pagination({
   const pageNumbers = getPageNumbers();
 
   return (
-    <div className="bg-[#F2F2F2] mb-12">
+    <div className="mb-6">
       {/* Pagination */}
       <div className="flex items-center justify-center mt-7 text-sm">
         <div className="flex items-center space-x-2 bg-white shadow-md rounded-full px-2 py-2 overflow-x-auto md:overflow-visible">
@@ -71,7 +71,7 @@ export default function Pagination({
                 >
                   {page}
                 </button>
-              )
+              ),
             )}
           </div>
 
