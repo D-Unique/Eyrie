@@ -2,9 +2,9 @@ import { listings } from "../Data/listingsData";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBed, FaBath } from "react-icons/fa";
+import { FaBed, FaBath, FaHeart } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
-import { HeartIcon, HomeIcon } from "@heroicons/react/24/outline";
+import { HomeIcon } from "@heroicons/react/24/outline";
 import Pagination from "./Pagination";
 import { BuyBadgeIcon, RentBadgeIcon } from "@/components/Icon";
 
@@ -105,7 +105,7 @@ export default function Dashboard() {
                       height={300}
                       className="w-full h-64 object-cover"
                     />
-                    <HeartIcon className="absolute top-4 right-4 text-2xl w-6 text-[#FFEDE6] hover:text-[#FF4500] transition cursor-pointer" />
+                    <FaHeart className="absolute top-4 right-4 text-2xl w-6 text-[#FFEDE6] hover:text-[#FF4500] transition cursor-pointer" />
                   </div>
                   {/* Content */}
                   <div className="p-4">

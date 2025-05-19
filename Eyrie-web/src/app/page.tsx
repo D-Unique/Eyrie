@@ -1,4 +1,4 @@
-"use client"; // This is a client component
+"use client";
 import Navbar from "@/components/LandingPageNavbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturedListings from "@/components/FeaturedListings";
@@ -6,6 +6,7 @@ import WhatYouGet from "@/components/WhatYouGet";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import Cta from "@/components/Cta";
+import DownloadAppBanner from "@/components/DownloadAppBanner";
 
 export default function Home() {
   return (
@@ -16,6 +17,10 @@ export default function Home() {
       <WhatYouGet />
       <Testimonials />
       <Cta />
+      {/* Display between CTA and Footer */}
+      <div className="relative z-10 px-8 sm:px-8 -mt-8 sm:-mt-8 -mb-6 sm:-mb-8">
+        <DownloadAppBanner />
+      </div>
       <Footer />
     </div>
   );

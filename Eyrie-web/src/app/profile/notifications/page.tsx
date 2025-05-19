@@ -5,9 +5,8 @@ import Header from "@/components/ProfileHeader";
 import Sidebar from "@/components/ProfileSidebar";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBed, FaBath } from "react-icons/fa";
+import { FaBed, FaBath, FaHeart } from "react-icons/fa";
 import { MdSquareFoot } from "react-icons/md";
-import { HeartIcon } from "@heroicons/react/24/outline";
 import { BuyBadgeIcon, RentBadgeIcon } from "@/components/Icon";
 
 interface Notification {
@@ -168,7 +167,7 @@ export default function Notifications() {
                         height={300}
                         className="w-full h-64 object-cover filter grayscale"
                       />
-                      <HeartIcon className="absolute top-4 right-4 text-2xl w-6 text-[#FFEDE6] hover:text-[#FF4500] transition cursor-pointer" />
+                      <FaHeart className="absolute top-4 right-4 text-2xl w-6 text-[#FFEDE6] hover:text-[#FF4500] transition cursor-pointer" />
                     </div>
 
                     {/* Content Section */}

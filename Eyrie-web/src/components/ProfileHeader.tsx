@@ -39,7 +39,7 @@ export default function Header({
           {/* Top Row: Logo + Mobile Menu Toggle */}
           <div className="flex justify-between items-center w-full sm:w-auto">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo.png"
               alt="Eyrie Logo"
               width={75}
               height={35}

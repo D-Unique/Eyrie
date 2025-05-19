@@ -34,8 +34,7 @@ export default function Login() {
 
       {/* Login Form */}
       <div className="relative flex flex-col min-h-screen items-center justify-center p-4 z-10">
-
-        <div className="bg-white w-full max-w-sm p-4 sm:p-6 rounded-[24px] border border-[#B53100] flex flex-col gap-4">
+        <div className="bg-[#FEFEFE] w-full max-w-sm p-4 sm:p-6 rounded-[24px] border border-[#B53100] flex flex-col gap-4">
           <h1 className="text-2xl sm:text-2xl font-bold text-center text-[#161616]">
             Welcome Back!
           </h1>
@@ -111,7 +110,13 @@ export default function Login() {
 
         {/* Footer */}
         <div className="mt-8 text-center">
-          <p className="text-3xl sm:text-4xl md:text-5xl font-black text-[#161616]">Eyrie™</p>
+          <Image
+            src="/images/logo.png"
+            alt="Eyrie Logo"
+            width={120}
+            height={40}
+            className="mx-auto"
+          />
         </div>
       </div>
     </div>

@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function Cta() {
   return (
-    <div className="relative w-full h-[60vh] min-h-[400px] sm:h-[70vh] lg:h-[500px]">
+    <div className="relative w-full h-[30vh] min-h-[250px] lg:h-[500px]">
       {/* Background Image */}
       <Image
-        src="/images/cta.jpg"
+        src="/images/cta.png"
         alt="Hero House"
         fill
         className="object-cover"
