@@ -41,11 +41,19 @@ export default function Signup() {
       {/* Right Section: Signup Form */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center bg-white px-6 md:px-12">
         <div className="w-full max-w-sm">
-          <h1 className="text-2xl sm:text-2xl font-bold text-center text-[#161616] mb-4">Create your Account</h1>
+          <h1 className="text-2xl sm:text-2xl font-bold text-center text-[#161616] mb-4">
+            Create your Account
+          </h1>
 
           {/* Sign up with Google */}
           <button className="flex mb-4 items-center justify-center w-full bg-gray-100 text-black text-sm py-2 px-4 rounded-xl hover:bg-[#B6B6B6] transition duration-300">
-            <Image src="/images/google-icon.svg" alt="Google" width={20} height={20} className="mr-2" />
+            <Image
+              src="/images/google-icon.svg"
+              alt="Google"
+              width={20}
+              height={20}
+              className="mr-2"
+            />
             Sign up with Google
           </button>
 
@@ -60,7 +68,10 @@ export default function Signup() {
           {/* Signup Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-bold text-[#161616] mt-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-bold text-[#161616] mt-4"
+              >
                 Full name
               </label>
               <input
@@ -75,7 +86,10 @@ export default function Signup() {
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-bold text-[#161616]">
+              <label
+                htmlFor="email"
+                className="block text-sm font-bold text-[#161616]"
+              >
                 Your Email
               </label>
               <input
@@ -90,7 +104,10 @@ export default function Signup() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-bold text-[#161616]">
+              <label
+                htmlFor="password"
+                className="block text-sm font-bold text-[#161616]"
+              >
                 Password
               </label>
               <input
@@ -105,7 +122,10 @@ export default function Signup() {
               />
             </div>
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-bold text-[#161616]">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-bold text-[#161616]"
+              >
                 Confirm Password
               </label>
               <input
@@ -123,7 +143,7 @@ export default function Signup() {
               type="submit"
               className="w-full h-[50px] px-[24px] py-[16px] bg-[#FF4500] text-[#FFEDE6] border border-[#000000] rounded-[32px] font-medium text-[16px] leading-[24px] font-inter flex items-center justify-center gap-[10px] hover:bg-[#FF5722] active:bg-[#FF8A65] transition duration-300"
             >
-              Check property Listings
+              Get Started
             </button>
           </form>
         </div>

@@ -27,6 +27,42 @@ body {
   animation: slideFromLeft 1.2s ease-out forwards;
 }
 
+/* Notification banner animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Mobile-specific styles for the notification */
+@media (max-width: 640px) {
+  .mobile-notification {
+    top: 80px;
+    right: 16px;
+    width: calc(100% - 32px);
+    max-width: 300px;
+    animation: slideIn 0.3s ease-out forwards;
+  }
+}
+
 /* Button hover animations */
 .btn-hover {
   position: relative;

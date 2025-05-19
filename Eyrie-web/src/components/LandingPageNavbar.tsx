@@ -7,12 +7,12 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center px-4 py-3 md:px-12 bg-white rounded-full mx-auto mt-5 max-w-6xl mb-4">
+    <nav className="flex justify-between items-center px-4 py-3 md:px-12 bg-[#FEFEFE] rounded-full mx-auto mt-5 max-w-6xl mb-4">
       {/* Logo */}
       <div className="flex items-center">
         <Link href="/">
           <Image
-            src="/images/logo.jpg"
+            src="/images/logo.png"
             alt="Eyrie Logo"
             width={80}
             height={40}
@@ -22,7 +22,7 @@ export default function Navbar() {
       </div>
 
       {/* Desktop Navigation Links */}
-      <div className="hidden md:flex space-x-8 bg-white text-black">
+      <div className="hidden md:flex space-x-8 bg-[#FEFEFE] text-[#161616] text-base">
         {[
           "Home",
           "Property listings",
@@ -33,7 +33,7 @@ export default function Navbar() {
           <Link
             href={`/${item.toLowerCase().replace(" ", "-")}`}
             key={index}
-            className={`text-black hover:text-gray-600 transition-colors duration-300 ${
+            className={`text-[#161616] hover:text-[#FF4500] transition-colors duration-300 ${
               item === "Property listings"
                 ? "relative group flex items-center"
                 : ""
@@ -64,7 +64,7 @@ export default function Navbar() {
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-black focus:outline-none"
+          className="text-[#161616] focus:outline-none"
         >
           <svg
             className="w-6 h-6"
@@ -94,7 +94,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-md rounded-lg z-50 md:hidden">
+        <div className="absolute top-16 left-0 w-full bg-[#FEFEFE] shadow-md rounded-lg z-50 md:hidden">
           <ul className="flex flex-col items-center space-y-4 py-4">
             {[
               "Home",
@@ -106,7 +106,7 @@ export default function Navbar() {
               <li key={index}>
                 <Link
                   href={`/${item.toLowerCase().replace(" ", "-")}`}
-                  className="text-black hover:text-gray-600 transition-colors duration-300"
+                  className="text-[#161616] hover:text-[#FF4500] transition-colors duration-300"
                 >
                   {item}
                 </Link>
@@ -115,8 +115,8 @@ export default function Navbar() {
             <li>
               <Link
                 href="/login"
-                className="border border-gray-300 text-black px-6 py-2 rounded-full
-                hover:bg-gray-100 transition-all duration-300"
+                className="border border-[#555] text-[#161616] px-6 py-2 rounded-full
+                hover:bg-[#FF4500] hover:text-[#FEFEFE] transition-all duration-300"
               >
                 Login
               </Link>
@@ -128,8 +128,8 @@ export default function Navbar() {
       {/* Login Button (Visible on Desktop) */}
       <Link
         href="/login"
-        className="hidden md:block border border-gray-300 text-black px-6 py-2 rounded-full
-        hover:bg-gray-100 transition-all duration-300"
+        className="hidden md:block border border-[#555] text-[#161616] px-6 py-2 rounded-full
+        hover:bg-[#FF4500] hover:text-[#FEFEFE] transition-all duration-300"
       >
         Login
       </Link>

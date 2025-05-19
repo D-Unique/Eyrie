@@ -14,28 +14,33 @@ export default function WhatYouGet() {
           {/* Feature 1 */}
           <div className="bg-[#FFEDE6] border border-[#FF4500] rounded-3xl p-6 items-center">
             <Image
-              src="/images/building.jpg"
+              src="/images/building.png"
               alt="Personalized matches"
               width={80}
               height={80}
               className="mb-6"
             />
-            <h4 className="font-semibold text-base text-[#8C2600] mb-2 items-start text-left">Personalized matches</h4>
+            <h4 className="font-semibold text-base text-[#8C2600] mb-2 items-start text-left">
+              Personalized matches
+            </h4>
             <p className="text-sm text-black">
-              Tell us what you're looking for, and we'll show you homes that fit your lifestyle perfectly.
+              Tell us what you're looking for, and we'll show you homes that fit
+              your lifestyle perfectly.
             </p>
           </div>
 
           {/* Feature 2 */}
           <div className="bg-[#FFEDE6] border border-[#FF4500] rounded-3xl p-6 text-center">
             <Image
-              src="/images/clock.jpg"
+              src="/images/clock.png"
               alt="Schedule visits online"
               width={80}
               height={80}
               className="mb-6"
             />
-            <h4 className="font-semibold text-base text-[#8C2600] mb-2 items-start text-left">Schedule visits online</h4>
+            <h4 className="font-semibold text-base text-[#8C2600] mb-2 items-start text-left">
+              Schedule visits online
+            </h4>
             <p className="text-sm text-black items-start text-left">
               Book property viewings instantly — no phone calls, no hassle.
             </p>
@@ -44,15 +49,18 @@ export default function WhatYouGet() {
           {/* Feature 3 */}
           <div className="bg-[#FFEDE6] border border-[#FF4500] rounded-3xl p-6 text-center">
             <Image
-              src="/images/save.jpg"
+              src="/images/save.png"
               alt="Save favorite properties"
               width={80}
               height={80}
               className="mb-6"
             />
-            <h4 className="font-semibold text-base text-[#8C2600] mb-2 items-start text-left">Save favorite properties</h4>
-            <p className="text-sm text-black items-start text-left">
-              Like what you see? Save listings to revisit anytime and compare easily.
+            <h4 className="font-semibold text-base text-[#8C2600] mb-2 items-start text-left">
+              Save favorite properties
+            </h4>
+            <p className="text-sm text-[#161616] items-start text-left">
+              Like what you see? Save listings to revisit anytime and compare
+              easily.
             </p>
           </div>
         </div>
@@ -73,9 +81,12 @@ export default function WhatYouGet() {
           </div>
           {/* Text Content */}
           <div className="w-full md:w-1/2">
-            <h3 className="text-2xl font-bold mb-3 text-[#FFFFFF]">Your dream home could be just a click away</h3>
+            <h3 className="text-2xl font-bold mb-3 text-[#FFFFFF]">
+              Your dream home could be just a click away
+            </h3>
             <p className="mb-3 text-sm md:text-base text-[#FFFFFF]">
-              Separated they live in Bookmarks right at the coast of the famous Semantics, large language ocean.
+              Separated they live in Bookmarks right at the coast of the famous
+              Semantics, large language ocean.
             </p>
             <ul className="list-disc pl-5 space-y-1 text-sm md:text-base text-[#FFFFFF]">
               <li>Showcase and embed your work with</li>
