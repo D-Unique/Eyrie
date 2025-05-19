@@ -25,7 +25,7 @@ export default function FeaturedListings() {
   useEffect(() => {
     // Shuffle the listings array and select 8 random listings
     const shuffledListings = [...allListings].sort(() => Math.random() - 0.5);
-    setRandomListings(shuffledListings.slice(0, 8));
+    setRandomListings(shuffledListings.slice(0, 4));
   }, []);
 
   return (
